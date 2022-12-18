@@ -21,7 +21,8 @@ mason_lspconfig.setup({
     "html",
     "cssls",
     "tailwindcss",
-    "sumneko_lua"
+    "sumneko_lua",
+    "pyright"
   }
 })
 
@@ -29,6 +30,8 @@ mason_null_ls.setup({
   ensure_installed = {
     "prettier",
     "stylua",
-    "eslint_d"
+    "eslint_d",
+    "pylint",
+    "yamlfmt"
   }
 })

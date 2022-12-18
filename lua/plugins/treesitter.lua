@@ -25,6 +25,9 @@ treesitter.setup({
     "vim",
     "dockerfile",
     "gitignore",
+    "python",
+    "go",
+    "vue",
   },
   auto_install = true
 })

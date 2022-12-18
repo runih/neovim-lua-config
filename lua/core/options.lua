@@ -24,6 +24,7 @@ opt.cursorline = true
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
+opt.showtabline = 0
 
 -- backspace
 opt.backspace = "indent,eol,start"
