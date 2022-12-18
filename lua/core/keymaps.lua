@@ -4,7 +4,9 @@ local keymap = vim.keymap -- for conciseness
 
 -- general keymaps
 
- keymap.set("i", "jk", "<ESC>")
+keymap.set("t", "<C-W><C-N>", "<C-\\><C-N>", {remap = true }) -- Map <ctrl w>+<ctrl n> to exit terminal mode
+
+keymap.set("i", "jk", "<ESC>")
 
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
@@ -43,3 +45,6 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 
 -- Mason
 keymap.set("n", "<leader>M", ":Mason<CR>")
+
+-- LazyGit
+keymap.set("n", "<leader>gg", ":LazyGit<CR>")

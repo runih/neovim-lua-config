@@ -96,9 +96,9 @@ return packer.startup(function(use)
   use("windwp/nvim-autopairs")
   use("windwp/nvim-ts-autotag")
 
-  -- git signs plugin
+  -- git plugins
   use("lewis6991/gitsigns.nvim")
-  use("tpope/vim-fugitive")
+  use("kdheepak/lazygit.nvim")
 
   if packer_bootstrap then
     require("packer").sync()
