@@ -10,6 +10,8 @@ keymap.set("i", "jk", "<ESC>")
 
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
+-- mine preferences
+keymap.set("n", "<leader>init", ":tabedit ~/.config/nvim/init.lua<CR>|:lcd %:h<CR>")
 keymap.set("n", "<leader>sf", ":source %<CR>")
 keymap.set("n", "<leader>cd", ":lcd %:h<CR>")
 
