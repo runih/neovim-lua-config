@@ -39,9 +39,22 @@ keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "
 keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+keymap.set("n", "<leader>km", require("telescope.builtin").keymaps, { desc = "[K]ey[M]aps"})
 
 -- Mason
 keymap.set("n", "<leader>M", "<cmd>Mason<CR>")
 
 -- LazyGit
 keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>")
+
+-- debugging
+keymap.set("n", "<F2>", "<cmd>lua require'dap'.continue()<CR>")
+keymap.set("n", "<F3>", "<cmd>lua require'dap'.step_into()<CR>")
+keymap.set("n", "<F4>", "<cmd>lua require'dap'.step_over()<CR>")
+keymap.set("n", "<F5>", "<cmd>lua require'dap'.step_out()<CR>")
+keymap.set("n", "<leader>b", "<cmd>lua require'dap'.toggle_breakpoint()<CR>")
+keymap.set("n", "<leader>B", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+keymap.set("n", "<leader>lp", "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.open()<CR>")
+keymap.set("n", "<leader>du", "<cmd>lua require'dapui'.open()<CR>")
+keymap.set("n", "<leader>dc", "<cmd>lua require'dapui'.close()<CR>")
