@@ -1,3 +1,7 @@
+-- Make sure the the debuggers are installed
+-- go: 'go install github.com/go-delve/delve/cmd/dlv@latest'
+-- python: 'pip install debugpy'
+
 local dap_setup, dap = pcall(require, "dap")
 if not dap_setup then
   return
@@ -11,6 +15,11 @@ end
 local dap_virtual_text_setup, dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
 if not dap_virtual_text_setup then
   print("Did not load dap-virtual-text")
+  return
+end
+
+local dapgo_status, dapgo = pcall(require, "dap-go")
+if not dapgo_status then
   return
 end
 
@@ -35,6 +44,8 @@ dap.configurations.python = {
 dapui.setup()
 
 dap_virtual_text.setup()
+
+dapgo.setup()
 
 dap.listeners.after.event_initialized["dapui_config"] = function ()
   dapui.open()
