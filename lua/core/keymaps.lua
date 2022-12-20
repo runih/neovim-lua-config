@@ -12,16 +12,16 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- mine preferences
 keymap.set("n", "<leader>init", ":tabedit ~/.config/nvim/init.lua<CR>|:lcd %:h<CR>")
-keymap.set("n", "<leader>so", ":source %<CR>")
-keymap.set("n", "<leader>cd", ":lcd %:h<CR>")
+keymap.set("n", "<leader>so", "<cmd>source %<CR>")
+keymap.set("n", "<leader>cd", "<cmd>lcd %:h<CR>")
 
 -- plugin keymaps
 
 -- vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
+keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>")
 
 -- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
 
 -- telescope
 keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
@@ -41,7 +41,7 @@ keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "
 keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 
 -- Mason
-keymap.set("n", "<leader>M", ":Mason<CR>")
+keymap.set("n", "<leader>M", "<cmd>Mason<CR>")
 
 -- LazyGit
-keymap.set("n", "<leader>gg", ":LazyGit<CR>")
+keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>")

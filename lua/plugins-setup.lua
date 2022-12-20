@@ -29,6 +29,9 @@ return packer.startup(function(use)
 
   use("wbthomason/packer.nvim")
 
+  -- Show leader mappings
+  use("folke/which-key.nvim")
+
   -- lua functions that many plugins use
   use("nvim-lua/plenary.nvim")
 
