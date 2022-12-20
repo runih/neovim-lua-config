@@ -22,7 +22,8 @@ mason_lspconfig.setup({
     "cssls",
     "tailwindcss",
     "sumneko_lua",
-    "pyright"
+    "pyright",
+    "gopls"
   }
 })
 
@@ -32,6 +33,7 @@ mason_null_ls.setup({
     "stylua",
     "eslint_d",
     "pylint",
-    "yamlfmt"
+    "yamlfmt",
+    "golangci-lint"
   }
 })

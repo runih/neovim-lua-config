@@ -8,13 +8,22 @@ if not actions_setup then
   return
 end
 
+local action_state_status, action_state = pcall(require, "telescope.actions.state")
+if not action_state_status then
+  return
+end
+
 telescope.setup({
   defaults = {
+    prompt_prefix = "$ ",
     mappings = {
       i = {
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
         ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        ["<C-a>"] = function ()
+          print(vim.inspect(action_state.get_selected_entry()))
+        end
       }
     }
   }
