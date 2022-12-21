@@ -21,7 +21,11 @@ opt.smartcase = true
 opt.cursorline = true
 
 -- appearance
+-- Installing Nerd font:
+--      brew tap homebrew/cask-fonts
+--      brew install --cask font-hack-nerd-font
 if not string.find(vim.env.VIM, "VimR") then
+  -- Don't change the font for VimR
   opt.guifont = { "Hack Nerd Font Mono", ":h16" }
 end
 opt.termguicolors = true
