@@ -21,6 +21,9 @@ opt.smartcase = true
 opt.cursorline = true
 
 -- appearance
+if not string.find(vim.env.VIM, "VimR") then
+  opt.guifont = { "Hack Nerd Font Mono", ":h16" }
+end
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
