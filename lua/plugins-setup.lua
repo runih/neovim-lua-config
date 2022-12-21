@@ -110,6 +110,9 @@ return packer.startup(function(use)
   use 'nvim-telescope/telescope-dap.nvim'
   use 'leoluz/nvim-dap-go'
 
+  -- css
+  use 'norcalli/nvim-colorizer.lua'
+
   if packer_bootstrap then
     require("packer").sync()
   end
