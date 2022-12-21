@@ -41,6 +41,23 @@ dap.configurations.python = {
   },
 }
 
+dap.adapters.coreclr = {
+  type = 'executable',
+  command = '/usr/local/netcoredbg',
+  args = {'--interpreter=vscode'}
+}
+
+dap.configurations.cs = {
+  {
+    type = "coreclr",
+    name = "launch - netcoredbg",
+    request = "launch",
+    program = function ()
+      return vim.fn.input('Select the dll to debug', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+    end,
+  },
+}
+
 dapui.setup()
 
 dap_virtual_text.setup()
