@@ -94,6 +94,7 @@ return packer.startup(function(use)
       require("nvim-treesitter.install").update({ with_sync = true })
     end,
   })
+  use("nvim-treesitter/playground")
 
   -- auto closing
   use("windwp/nvim-autopairs")
