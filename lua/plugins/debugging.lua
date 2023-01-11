@@ -27,17 +27,24 @@ if not dapgo_status then
 end
 
 dap.adapters.python = {
-  type = 'executable';
-  command = 'python';
-  args = { '-m', 'debugpy.adapter' };
+  type = 'executable',
+  command = MASON_BIN_PATH .. "/debugpy-adapter",
 }
 
 dap.configurations.python = {
   {
-    type = 'python';
-    request = 'launch';
-    name = "Launch file";
-    program = "${file}";
+    type = 'python',
+    request = 'launch',
+    name = "Launch file",
+    program = "${file}",
+    args = function()
+      local s = vim.fn.input('Enter arguments: ')
+      local args = {}
+      for arg in string.gmatch(s, "[a-zA-Z,-]+") do
+        table.insert(args, arg)
+      end
+      return args
+    end,
     pythonPath = function()
       return 'python'
     end;
@@ -46,7 +53,7 @@ dap.configurations.python = {
 
 dap.adapters.coreclr = {
   type = 'executable',
-  command = '/usr/local/netcoredbg',
+  command = MASON_BIN_PATH .. '/netcoredbg',
   args = {'--interpreter=vscode'}
 }
 
@@ -87,6 +94,30 @@ dap.configurations.sh = {
   }
 }
 
+dap.configurations.cpp = {
+  {
+    name = "Launch file",
+    type = "cppdbg",
+    request = "launch",
+    program = function ()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopAtEntry = true,
+  },
+  {
+    name = 'Attach to gdbserver:1234',
+    type = 'cppdbg',
+    request = 'launch',
+    MIMode = 'gdb',
+    miDebuggerSererAddress = 'localhost:1234',
+    miDebuggerPath = '/usr/bin/gdb',
+    cwd = '${workspaceFolder}',
+    program = function ()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+  }
+}
 
 dapui.setup()
 
