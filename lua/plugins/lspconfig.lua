@@ -10,8 +10,64 @@ return {
 
     -- Additional lua configuration, makes nvim stuff amazing
     'folke/neodev.nvim',
+    { 'glepnir/lspsaga.nvim', branch = 'main' },
   },
   config = function()
+    local mason_status, mason = pcall(require, "mason")
+    if not mason_status then
+      return
+    end
+
+    local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
+    if not mason_lspconfig_status then
+      return
+    end
+
+    local mason_null_ls_status, mason_null_ls = pcall(require, "mason-null-ls")
+    if not mason_null_ls_status then
+      return
+    end
+
+    mason.setup()
+
+    mason_lspconfig.setup({
+      ensure_installed = {
+        "tsserver",
+        "html",
+        "cssls",
+        "tailwindcss",
+        "sumneko_lua",
+        "pyright",
+        "gopls"
+      }
+    })
+
+    mason_null_ls.setup({
+      ensure_installed = {
+        "prettier",
+        "stylua",
+        "eslint_d",
+        "pylint",
+        "yamlfmt",
+        "golangci-lint"
+      }
+    })
+
+    local saga_loaded, saga = pcall(require, "lspsaga")
+    if not saga_loaded then
+      return
+    end
+
+    saga.init_lsp_saga({
+      move_in_saga = { prev = "<C-k>", next = "<C-j>" },
+      finder_action_keys = {
+        open = "<CR>",
+      },
+      definition_action_keys = {
+        edit = "<CR>",
+      }
+    })
+
     local lspconfig_status, lspconfig = pcall(require, "lspconfig")
     if not lspconfig_status then
       return

@@ -21,13 +21,4 @@ return {
   'jose-elias-alvarez/typescript.nvim',
   'onsails/lspkind.nvim',
 
-  -- debugging
-  'mfussenegger/nvim-dap',
-  'rcarriga/nvim-dap-ui',
-  'theHamsta/nvim-dap-virtual-text',
-  'nvim-telescope/telescope-dap.nvim',
-  'leoluz/nvim-dap-go',
-
-  -- css
-  'norcalli/nvim-colorizer.lua',
 }

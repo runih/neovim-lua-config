@@ -1,7 +1,9 @@
 return {
   -- formatting & linting
   'jose-elias-alvarez/null-ls.nvim',
-  'jayp0521/mason-null-ls.nvim',
+  dependencies = {
+    'jayp0521/mason-null-ls.nvim',
+  },
   config = function()
     local setup, null_ls = pcall(require, "null_ls")
     if not setup then

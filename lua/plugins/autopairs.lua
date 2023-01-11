@@ -1,7 +1,9 @@
 return {
   -- auto closing
   'windwp/nvim-autopairs',
-  'windwp/nvim-ts-autotag',
+  dependencies = {
+    'windwp/nvim-ts-autotag',
+  },
 
   config = function()
     local autopairs_loaded, autopairs = pcall(require, "nvim-autopairs")
