@@ -20,12 +20,12 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
   -- set keybinds
-  keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-  keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts)
-  keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-  keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+  keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, opts)
+  keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, opts)
+  keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, opts)
+  keymap.set("n", "<leader>gf", "<cmd>Lspsaga lsp_finder<CR>", opts)
+  keymap.set("n", "<leader>gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+  keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", opts)
   keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
   keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
   keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)

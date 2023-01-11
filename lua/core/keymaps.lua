@@ -24,8 +24,6 @@ keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>")
 keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
 
 -- telescope
-keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
-keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 keymap.set("n", "<leader>/", function()
   -- You can pass additional configuratiohn to telescope to change theme, layout, etc,
   require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
@@ -34,6 +32,8 @@ keymap.set("n", "<leader>/", function()
   })
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
+keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
+keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
 keymap.set("n", "<leader>sgf", require("telescope.builtin").git_files, { desc = "[S]earch [G]it [F]iles" })
 keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
