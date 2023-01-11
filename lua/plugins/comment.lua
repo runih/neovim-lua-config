@@ -1,6 +1,13 @@
-local setup, comment = pcall(require, "Comment")
-if not setup then
-  return
-end
+return {
+  -- commenting with gc
+  'numToStr/Comment.nvim',
 
-comment.setup()
+  config = function()
+    local loaded, comment = pcall(require, "Comment")
+    if not loaded then
+      return
+    end
+
+    comment.setup()
+  end
+}
