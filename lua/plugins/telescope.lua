@@ -44,6 +44,13 @@ return {
       }
     })
 
+    local test_harness_ok, test_harness = pcall(require, "plenary.test_harness")
+    if not test_harness_ok then
+      return
+    end
+
+    test_harness.setup()
+
     telescope.load_extension("fzf")
   end
 }

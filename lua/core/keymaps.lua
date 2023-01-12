@@ -42,6 +42,8 @@ keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc =
 keymap.set("n", "<leader>km", require("telescope.builtin").keymaps, { desc = "[K]ey[M]aps"})
 keymap.set("n", "<leader>st", require("telescope.builtin").filetypes, { desc = "[S]search [T]ypes"})
 
+keymap.set("n", "<leader>t", "<Plug>PlenaryTestFile", { desc = "Plenary[T]estFile"})
+
 -- Mason
 keymap.set("n", "<leader>M", "<cmd>Mason<CR>")
 
