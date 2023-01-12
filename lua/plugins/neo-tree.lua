@@ -4,7 +4,7 @@ return {
   keys = {
     { "<leader>ft", "<cmd>Neotree toggle<CR>", desc = "NeoTree" },
   },
-  dependencies = { 
+  dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },

@@ -18,7 +18,6 @@ return {
     -- configureing lsp servers
     'jose-elias-alvarez/typescript.nvim',
     'onsails/lspkind.nvim',
-
   },
   config = function()
     local mason_ok, mason = pcall(require, "mason")
@@ -61,8 +60,8 @@ return {
       }
     })
 
-    local saga_loaded, saga = pcall(require, "lspsaga")
-    if not saga_loaded then
+    local saga_ok, saga = pcall(require, "lspsaga")
+    if not saga_ok then
       return
     end
 
@@ -76,18 +75,18 @@ return {
       }
     })
 
-    local lspconfig_status, lspconfig = pcall(require, "lspconfig")
-    if not lspconfig_status then
+    local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
+    if not lspconfig_ok then
       return
     end
 
-    local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-    if not cmp_nvim_lsp_status then
+    local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+    if not cmp_nvim_lsp_ok then
       return
     end
 
-    local typescript_setup, typescript = pcall(require, "typescript")
-    if not typescript_setup then
+    local typescript_ok, typescript = pcall(require, "typescript")
+    if not typescript_ok then
       return
     end
 

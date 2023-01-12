@@ -13,5 +13,4 @@ return {
 
   -- Themes
   'bluz71/vim-nightfly-guicolors',
-
 }
