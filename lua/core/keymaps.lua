@@ -40,6 +40,7 @@ keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc =
 keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 keymap.set("n", "<leader>km", require("telescope.builtin").keymaps, { desc = "[K]ey[M]aps"})
+keymap.set("n", "<leader>st", require("telescope.builtin").filetypes, { desc = "[S]search [T]ypes"})
 
 -- Mason
 keymap.set("n", "<leader>M", "<cmd>Mason<CR>")
