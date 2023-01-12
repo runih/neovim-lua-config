@@ -15,24 +15,23 @@ return {
     local MASON_BIN_PATH = os.getenv("HOME") .. "/.local/share/nvim/mason/bin"
     local MASON_PACKAGE_PATH = os.getenv("HOME") .. "/.local/share/nvim/mason/packages"
 
-    local dap_setup, dap = pcall(require, "dap")
-    if not dap_setup then
+    local dap_ok, dap = pcall(require, "dap")
+    if not dap_ok then
       return
     end
 
-    local dapui_setup, dapui = pcall(require, "dapui")
-    if not dapui_setup then
+    local dapui_ok, dapui = pcall(require, "dapui")
+    if not dapui_ok then
       return
     end
 
-    local dap_virtual_text_setup, dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
-    if not dap_virtual_text_setup then
-      print("Did not load dap-virtual-text")
+    local dap_virtual_text_ok, dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
+    if not dap_virtual_text_ok then
       return
     end
 
-    local dapgo_status, dapgo = pcall(require, "dap-go")
-    if not dapgo_status then
+    local dapgo_ok, dapgo = pcall(require, "dap-go")
+    if not dapgo_ok then
       return
     end
 

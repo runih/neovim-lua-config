@@ -3,14 +3,17 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = function()
-      require('nvim-treesitter.install').update({ with_sync = true })
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    }
   },
   'nvim-treesitter/playground',
 
   config = function()
-    local status, treesitter = pcall(require, "nvim-treesitter.configs")
-    if not status then
+    local ok, treesitter = pcall(require, "nvim-treesitter.configs")
+    if not ok then
       return
     end
 

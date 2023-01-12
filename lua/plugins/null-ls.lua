@@ -5,8 +5,8 @@ return {
     'jayp0521/mason-null-ls.nvim',
   },
   config = function()
-    local setup, null_ls = pcall(require, "null_ls")
-    if not setup then
+    local ok, null_ls = pcall(require, "null_ls")
+    if not ok then
       return
     end
 

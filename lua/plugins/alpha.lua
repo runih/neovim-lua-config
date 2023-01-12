@@ -4,8 +4,16 @@ return {
     "kyazdani42/nvim-web-devicons",
   },
   config = function()
-    require('alpha').setup(
-      require('alpha.themes.startify').config
-    )
+    local ok, alpha = pcall(require, 'alpha')
+    if not ok then
+      return
+    end
+
+    local theme_ok, theme = pcall(require, 'alpha.themes.startify')
+    if not theme_ok then
+      return
+    end
+
+    alpha.setup(theme.config)
   end
 }

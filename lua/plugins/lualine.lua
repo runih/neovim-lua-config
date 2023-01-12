@@ -1,12 +1,15 @@
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-    local status, lualine = pcall(require, "lualine")
-    if not status then
+    local ok, lualine = pcall(require, "lualine")
+    if not ok then
       return
     end
 
-    local lualine_nightfly = require("lualine.themes.nightfly")
+    local lualine_nightfly_ok, lualine_nightfly = pcall(require, "lualine.themes.nightfly")
+    if not lualine_nightfly_ok then
+      return
+    end
 
     local new_colors = {
       blue = "#65D1FF",

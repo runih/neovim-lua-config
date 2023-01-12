@@ -3,8 +3,8 @@ return {
   'numToStr/Comment.nvim',
 
   config = function()
-    local loaded, comment = pcall(require, "Comment")
-    if not loaded then
+    local ok, comment = pcall(require, "Comment")
+    if not ok then
       return
     end
 

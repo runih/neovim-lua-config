@@ -14,8 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local status, lazy = pcall(require, "lazy")
-if not status then
+local ok, lazy = pcall(require, "lazy")
+if not ok then
   return
 end
 

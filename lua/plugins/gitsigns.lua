@@ -2,8 +2,8 @@ return {
   'lewis6991/gitsigns.nvim',
 
   config = function()
-    local setup, gitsigns = pcall(require , "gitsigns")
-    if not setup then
+    local ok, gitsigns = pcall(require , "gitsigns")
+    if not ok then
       return
     end
 

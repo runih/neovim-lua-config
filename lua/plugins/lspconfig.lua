@@ -10,21 +10,29 @@ return {
 
     -- Additional lua configuration, makes nvim stuff amazing
     'folke/neodev.nvim',
-    { 'glepnir/lspsaga.nvim', branch = 'main' },
+    {
+      'glepnir/lspsaga.nvim',
+      branch = 'main'
+    },
+
+    -- configureing lsp servers
+    'jose-elias-alvarez/typescript.nvim',
+    'onsails/lspkind.nvim',
+
   },
   config = function()
-    local mason_status, mason = pcall(require, "mason")
-    if not mason_status then
+    local mason_ok, mason = pcall(require, "mason")
+    if not mason_ok then
       return
     end
 
-    local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
-    if not mason_lspconfig_status then
+    local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+    if not mason_lspconfig_ok then
       return
     end
 
-    local mason_null_ls_status, mason_null_ls = pcall(require, "mason-null-ls")
-    if not mason_null_ls_status then
+    local mason_null_ls_ok, mason_null_ls = pcall(require, "mason-null-ls")
+    if not mason_null_ls_ok then
       return
     end
 

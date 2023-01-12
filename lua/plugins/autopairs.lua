@@ -6,8 +6,8 @@ return {
   },
 
   config = function()
-    local autopairs_loaded, autopairs = pcall(require, "nvim-autopairs")
-    if not autopairs_loaded then
+    local autopairs_ok, autopairs = pcall(require, "nvim-autopairs")
+    if not autopairs_ok then
       return
     end
 
@@ -21,14 +21,14 @@ return {
     })
 
     -- import nvim-autopairs completion functionality safely
-    local cmp_autopairs_loaded, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
-    if not cmp_autopairs_loaded then
+    local cmp_autopairs_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+    if not cmp_autopairs_ok then
       return
     end
 
     -- import nvim-cmp plugin safely (completions plugin)
-    local cmp_loaded, cmp = pcall(require, "cmp")
-    if not cmp_loaded then
+    local cmp_ok, cmp = pcall(require, "cmp")
+    if not cmp_ok then
       return
     end
 

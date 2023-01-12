@@ -4,6 +4,7 @@ return {
   dependencies = {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
+    'hrsh7th/cmp-nvim-lsp',
 
     -- snippets
     'L3MON4D3/LuaSnip',
@@ -12,18 +13,18 @@ return {
   },
 
   config = function()
-    local cmp_status, cmp = pcall(require, "cmp")
-    if not cmp_status then
+    local cmp_ok, cmp = pcall(require, "cmp")
+    if not cmp_ok then
       return
     end
 
-    local luasnip_status, luasnip = pcall(require, "luasnip")
-    if not luasnip_status then
+    local luasnip_ok, luasnip = pcall(require, "luasnip")
+    if not luasnip_ok then
       return
     end
 
-    local lspkind_status, lspkind = pcall(require, "lspkind")
-    if not lspkind_status then
+    local lspkind_ok, lspkind = pcall(require, "lspkind")
+    if not lspkind_ok then
       return
     end
 
