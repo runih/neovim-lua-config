@@ -39,13 +39,16 @@ keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc =
 keymap.set("n", "<leader>km", require("telescope.builtin").keymaps, { desc = "[K]ey[M]aps"})
 keymap.set("n", "<leader>st", require("telescope.builtin").filetypes, { desc = "[S]search [T]ypes"})
 
-keymap.set("n", "<leader>t", "<Plug>PlenaryTestFile", { desc = "Plenary[T]estFile"})
+keymap.set("n", "<leader>t", "<Plug>PlenaryTestFile", { desc = "Plenary[T]estFile" })
 
 -- Alpha
 keymap.set("n", "<leader>a", "<cmd>Alpha<CR>", { desc = "[A]lpha" })
 
 -- Mason
 keymap.set("n", "<leader>M", "<cmd>Mason<CR>", { desc = "[M]ason" })
+
+-- Lazy
+keymap.set("n", "<leader>L", "<cmd>Lazy<CR>", { desc = "[L]azy" })
 
 -- LazyGit
 keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
