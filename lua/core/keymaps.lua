@@ -19,9 +19,6 @@ keymap.set("n", "<leader>cd", "<cmd>lcd %:h<CR>")
 -- vim-maximizer
 keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>")
 
--- nvim-tree
-keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
-
 -- telescope
 keymap.set("n", "<leader>/", function()
   -- You can pass additional configuratiohn to telescope to change theme, layout, etc,
@@ -44,11 +41,14 @@ keymap.set("n", "<leader>st", require("telescope.builtin").filetypes, { desc = "
 
 keymap.set("n", "<leader>t", "<Plug>PlenaryTestFile", { desc = "Plenary[T]estFile"})
 
+-- Alpha
+keymap.set("n", "<leader>a", "<cmd>Alpha<CR>", { desc = "[A]lpha" })
+
 -- Mason
-keymap.set("n", "<leader>M", "<cmd>Mason<CR>")
+keymap.set("n", "<leader>M", "<cmd>Mason<CR>", { desc = "[M]ason" })
 
 -- LazyGit
-keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>")
+keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "LazyGit" })
 
 -- debugging
 keymap.set("n", "<F2>", "<cmd>lua require'dap'.continue()<CR>")
