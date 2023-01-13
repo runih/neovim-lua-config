@@ -2,8 +2,38 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs to stdpath for neovim
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
+    {
+      'williamboman/mason.nvim',
+      config = function ()
+        local ok, mason = pcall(require, "mason")
+        if not ok then
+          return
+        end
+
+        mason.setup()
+      end
+    },
+    {
+      'williamboman/mason-lspconfig.nvim',
+      config = function ()
+        local ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+        if not ok then
+          return
+        end
+
+        mason_lspconfig.setup({
+          ensure_installed = {
+            "tsserver",
+            "html",
+            "cssls",
+            "tailwindcss",
+            "sumneko_lua",
+            "pyright",
+            "gopls"
+          }
+        })
+      end
+    },
 
     -- Useful status update for LSP
     'j-hui/fidget.nvim',
@@ -12,7 +42,23 @@ return {
     'folke/neodev.nvim',
     {
       'glepnir/lspsaga.nvim',
-      branch = 'main'
+      branch = 'main',
+      config = function ()
+        local ok, saga = pcall(require, "lspsaga")
+        if not ok then
+          return
+        end
+        saga.setup({
+          move_in_saga = { prev = "<C-k>", next = "<C-j>" },
+          finder_action_keys = {
+            open = "<CR>",
+          },
+          definition_action_keys = {
+            edit = "<CR>",
+          }
+        })
+
+      end
     },
 
     -- configureing lsp servers
@@ -20,34 +66,10 @@ return {
     'onsails/lspkind.nvim',
   },
   config = function()
-    local mason_ok, mason = pcall(require, "mason")
-    if not mason_ok then
-      return
-    end
-
-    local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
-    if not mason_lspconfig_ok then
-      return
-    end
-
     local mason_null_ls_ok, mason_null_ls = pcall(require, "mason-null-ls")
     if not mason_null_ls_ok then
       return
     end
-
-    mason.setup()
-
-    mason_lspconfig.setup({
-      ensure_installed = {
-        "tsserver",
-        "html",
-        "cssls",
-        "tailwindcss",
-        "sumneko_lua",
-        "pyright",
-        "gopls"
-      }
-    })
 
     mason_null_ls.setup({
       ensure_installed = {
@@ -60,21 +82,6 @@ return {
       }
     })
 
-    local saga_ok, saga = pcall(require, "lspsaga")
-    if not saga_ok then
-      return
-    end
-
-    saga.init_lsp_saga({
-      move_in_saga = { prev = "<C-k>", next = "<C-j>" },
-      finder_action_keys = {
-        open = "<CR>",
-      },
-      definition_action_keys = {
-        edit = "<CR>",
-      }
-    })
-
     local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
     if not lspconfig_ok then
       return
@@ -82,6 +89,7 @@ return {
 
     local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     if not cmp_nvim_lsp_ok then
+      print("cmp_nvim_lsp not loaded")
       return
     end
 
