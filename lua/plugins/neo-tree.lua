@@ -1,9 +1,9 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
-  keys = {
-    { "<leader>e", "<cmd>Neotree toggle<CR>", desc = "NeoTree" },
-  },
+  --keys = {
+  --  { "<leader>e", "<cmd>Neotree toggle<CR>", desc = "NeoTree" },
+  --},
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",

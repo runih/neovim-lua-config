@@ -92,3 +92,13 @@ if dapui_loaded then
   keymap.set("n", "<leader>do",   dapui.open,                                   { desc = "[d]ebug UI [o]pen" })
   keymap.set("n", "<leader>dc",   dapui.close,                                  { desc = "[d]ebug UI [c]close" })
 end
+
+local neotree_loaded, neotree  = pcall(require, "neo-tree.command")
+if neotree_loaded then
+  local open_neotree = function ()
+    neotree.execute({
+      reveal=true
+    })
+  end
+  keymap.set("n", "<leader>e", open_neotree, { desc = "Open N[E]oTree" })
+end
