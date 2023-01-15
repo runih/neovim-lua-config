@@ -10,7 +10,6 @@ keymap.set("i", "jk", "<ESC>")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- mine preferences
-keymap.set("n", "<leader>init", ":tabedit ~/.config/nvim/init.lua<CR>|:lcd %:h<CR>")
 keymap.set("n", "<leader>so", "<cmd>source %<CR>")
 keymap.set("n", "<leader>cd", "<cmd>lcd %:h<CR>")
 
@@ -20,25 +19,44 @@ keymap.set("n", "<leader>cd", "<cmd>lcd %:h<CR>")
 keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>")
 
 -- telescope
-keymap.set("n", "<leader>/", function()
-  -- You can pass additional configuratiohn to telescope to change theme, layout, etc,
-  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer]' })
+local ok, builtin = pcall(require, "telescope.builtin")
+if ok then
+  keymap.set("n", "<leader>/", function()
+    -- You can pass additional configuratiohn to telescope to change theme, layout, etc,
+    builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
+      winblend = 10,
+      previewer = false,
+    })
+  end, { desc = '[/] Fuzzily search in current buffer]' })
 
-keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
-keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
-keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
-keymap.set("n", "<leader>sgf", require("telescope.builtin").git_files, { desc = "[S]earch [G]it [F]iles" })
-keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
-keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
-keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
-keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
-keymap.set("n", "<leader>km", require("telescope.builtin").keymaps, { desc = "[K]ey[M]aps"})
-keymap.set("n", "<leader>st", require("telescope.builtin").filetypes, { desc = "[S]search [T]ypes"})
+  local find_in_current_buff = function ()
+    -- search in current buffer
+    local theme = require("telescope.themes").get_dropdown({
+      previewer = false,
+      prompt_prefix = 'Search> ',
+      winblend=10
+    })
+    builtin.current_buffer_fuzzy_find(theme)
+  end
 
+  local nvim_config = function ()
+    -- List nvim config files
+    builtin.find_files({cwd="~/.config/nvim"})
+  end
+
+  keymap.set("n", "<leader>?",        builtin.oldfiles,                   { desc = "[?] Find recently opened files" })
+  keymap.set("n", "<leader><space>",  builtin.buffers,                    { desc = "[ ] Find existing buffers" })
+  keymap.set("n", "<leader>sf",       builtin.find_files,                 { desc = "[S]earch [F]iles" })
+  keymap.set("n", "<leader>sgf",      builtin.git_files,                  { desc = "[S]earch [G]it [F]iles" })
+  keymap.set("n", "<leader>sh",       builtin.help_tags,                  { desc = "[S]earch [H]elp" })
+  keymap.set("n", "<leader>sw",       builtin.grep_string,                { desc = "[S]earch current [W]ord" })
+  keymap.set("n", "<leader>sg",       builtin.live_grep,                  { desc = "[S]earch by [G]rep" })
+  keymap.set("n", "<leader>sd",       builtin.diagnostics,                { desc = "[S]earch [D]iagnostics" })
+  keymap.set("n", "<leader>km",       builtin.keymaps,                    { desc = "[K]ey[M]aps" })
+  keymap.set("n", "<leader>st",       builtin.filetypes,                  { desc = "[S]search [T]ypes" })
+  keymap.set("n", "|",                find_in_current_buff,               { desc = "[<C-/>] Search in current buffer" })
+  keymap.set("n", "<leader>sn",       nvim_config,                        { desc = "[S]earch [N]eoVim configurations" })
+end
 keymap.set("n", "<leader>t", "<Plug>PlenaryTestFile", { desc = "Plenary[T]estFile" })
 
 -- Alpha
