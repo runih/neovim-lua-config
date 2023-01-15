@@ -51,6 +51,13 @@ if builtin_loaded then
   keymap.set("n", "|",                find_in_current_buff,               { desc = "[|] Search in current buffer" })
   keymap.set("n", "<leader>sn",       nvim_config,                        { desc = "[S]earch [N]eoVim configurations" })
 end
+
+local telescope_tabs_loaded, telescope_tabs = pcall(require, "telescope-tabs")
+if telescope_tabs_loaded then
+  keymap.set("n", "<C-S-T>", telescope_tabs.list_tabs,                    { desc = "[L]ist [T]abs" })
+end
+
+-- For Testing lua files
 keymap.set("n", "<leader>t", "<Plug>PlenaryTestFile", { desc = "Plenary[T]estFile" })
 
 -- Alpha
