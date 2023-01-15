@@ -11,6 +11,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- mine preferences
 keymap.set("n", "<leader>so", "<cmd>source %<CR>")
+keymap.set("n", "<leader>lo", "<cmd>luafile %<CR>")
 keymap.set("n", "<leader>cd", "<cmd>lcd %:h<CR>")
 
 -- plugin keymaps
@@ -21,13 +22,6 @@ keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>")
 -- telescope
 local ok, builtin = pcall(require, "telescope.builtin")
 if ok then
-  keymap.set("n", "<leader>/", function()
-    -- You can pass additional configuratiohn to telescope to change theme, layout, etc,
-    builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
-      winblend = 10,
-      previewer = false,
-    })
-  end, { desc = '[/] Fuzzily search in current buffer]' })
 
   local find_in_current_buff = function ()
     -- search in current buffer
@@ -54,7 +48,7 @@ if ok then
   keymap.set("n", "<leader>sd",       builtin.diagnostics,                { desc = "[S]earch [D]iagnostics" })
   keymap.set("n", "<leader>km",       builtin.keymaps,                    { desc = "[K]ey[M]aps" })
   keymap.set("n", "<leader>st",       builtin.filetypes,                  { desc = "[S]search [T]ypes" })
-  keymap.set("n", "|",                find_in_current_buff,               { desc = "[<C-/>] Search in current buffer" })
+  keymap.set("n", "|",                find_in_current_buff,               { desc = "[|] Search in current buffer" })
   keymap.set("n", "<leader>sn",       nvim_config,                        { desc = "[S]earch [N]eoVim configurations" })
 end
 keymap.set("n", "<leader>t", "<Plug>PlenaryTestFile", { desc = "Plenary[T]estFile" })
