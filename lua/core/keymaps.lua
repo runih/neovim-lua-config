@@ -118,5 +118,5 @@ if neotree_loaded then
       reveal=true
     })
   end
-  keymap.set("n", "<leader>e", open_neotree, { desc = "Open N[E]oTree" })
+  keymap.set("n", "<c-e>", open_neotree, { desc = "Open N[E]oTree" })
 end
