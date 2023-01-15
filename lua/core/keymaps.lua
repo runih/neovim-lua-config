@@ -10,10 +10,21 @@ keymap.set("i", "jk", "<ESC>")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- mine preferences
-keymap.set("n", "<leader>so", "<cmd>source %<CR>")
-keymap.set("n", "<leader>lo", "<cmd>luafile %<CR>")
 keymap.set("n", "<leader>cd", "<cmd>lcd %:h<CR>")
 
+local load_current_luafile = function ()
+  local currentfile = vim.api.nvim_buf_get_name(0)
+  local filetype = vim.bo.filetype
+
+  print("Loaded " .. filetype .. " file " .. currentfile)
+  if filetype == "lua" then
+    vim.cmd("luafile " .. currentfile)
+  end
+  if filetype == "vim" then
+    vim.cmd("source " .. currentfile)
+  end
+end
+keymap.set("n", "<leader>so", load_current_luafile, { desc = "[Lo]ading current lua file" })
 -- plugin keymaps
 
 -- vim-maximizer
@@ -54,11 +65,11 @@ end
 
 local telescope_tabs_loaded, telescope_tabs = pcall(require, "telescope-tabs")
 if telescope_tabs_loaded then
-  keymap.set("n", "<C-S-T>", telescope_tabs.list_tabs,                    { desc = "[L]ist [T]abs" })
+  keymap.set("n", "<leader>t", telescope_tabs.list_tabs,                    { desc = "List [T]abs" })
 end
 
 -- For Testing lua files
-keymap.set("n", "<leader>t", "<Plug>PlenaryTestFile", { desc = "Plenary[T]estFile" })
+keymap.set("n", "<leader>T", "<Plug>PlenaryTestFile", { desc = "Plenary[T]estFile" })
 
 -- Alpha
 keymap.set("n", "<leader>a", "<cmd>Alpha<CR>", { desc = "[A]lpha" })
