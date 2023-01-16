@@ -30,6 +30,7 @@ local functions = {
     print("Loaded " .. filetype .. " file " .. currentfile)
     if filetype == "lua" then
       if get_file_name(currentfile) == "keymaps.lua" then
+        package.loaded["core.modules.execute"] = nil
         package.loaded["core.functions"] = nil
       end
       vim.cmd("luafile " .. currentfile)
