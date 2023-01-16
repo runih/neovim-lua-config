@@ -26,6 +26,7 @@ keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>")
 -- telescope
 local builtin_loaded, builtin = pcall(require, "telescope.builtin")
 if builtin_loaded then
+  keymap.set("n", "<leader>sB",       builtin.builtin,                    { desc = "[S]earch Telescope [B]uiltin" })
   keymap.set("n", "<leader>?",        builtin.oldfiles,                   { desc = "[?] Find recently opened files" })
   keymap.set("n", "<leader><space>",  builtin.buffers,                    { desc = "[ ] Find existing buffers" })
   keymap.set("n", "<leader>sf",       builtin.find_files,                 { desc = "[S]earch [F]iles" })
@@ -36,8 +37,15 @@ if builtin_loaded then
   keymap.set("n", "<leader>sd",       builtin.diagnostics,                { desc = "[S]earch [D]iagnostics" })
   keymap.set("n", "<leader>km",       builtin.keymaps,                    { desc = "[K]ey[M]aps" })
   keymap.set("n", "<leader>st",       builtin.filetypes,                  { desc = "[S]search [T]ypes" })
+  keymap.set("n", "<leader>sc",       builtin.colorscheme,                { desc = "[S]Search [C]olorscheme" })
   keymap.set("n", "|",                myfunctions.find_in_current_buff,   { desc = "[|] Search in current buffer" })
   keymap.set("n", "<leader>sn",       myfunctions.nvim_config,            { desc = "[S]earch [N]eoVim configurations" })
+  -- Git mappings
+  keymap.set("n", "<leader>GB",       builtin.git_branches,               { desc = "[G]it [B]ranches" })
+  keymap.set("n", "<leader>Gc",       builtin.git_commits,                { desc = "[G]it [C]ommits" })
+  keymap.set("n", "<leader>Gb",       builtin.git_bcommits,               { desc = "[G]it [B]uffer [C]ommits" })
+  keymap.set("n", "<leader>Gs",       builtin.git_status,                 { desc = "[G]it [S]tatus" })
+  keymap.set("n", "<leader>GS",       builtin.git_stash,                  { desc = "[G]it [S]tash" })
 end
 
 local telescope_tabs_loaded, telescope_tabs = pcall(require, "telescope-tabs")
