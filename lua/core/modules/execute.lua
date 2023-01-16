@@ -35,21 +35,23 @@ return {
       for str in string.gmatch(content[1], "%S+") do
         table.insert(cmd, str)
       end
-      vim.api.nvim_buf_set_lines(ShellBuffers[bufnr].output, 0, -1, false, {""})
       cmd = expand_cmd(cmd)
-      vim.fn.jobstart(cmd, {
-        stdout_bufferd = true,
-        on_stdout = function (index, data)
-          if data then
-            vim.api.nvim_buf_set_lines(ShellBuffers[bufnr].output, index - 1, index -1, false, data)
-          end
-        end,
-        on_stderr = function (index, data)
-          if data then
-            vim.api.nvim_buf_set_lines(ShellBuffers[bufnr].output, index - 1, index - 1, false, data)
+      local handle = io.popen(table.concat(cmd, " ") .. " 2>&1")
+      if handle then
+        local result = handle:read("*a")
+        local linenr = 1
+        for line in result:gmatch("([^\n]*)\n?") do
+          if line and string.len(line) > 0 then
+            if linenr == 1 then
+              vim.api.nvim_buf_set_lines(ShellBuffers[bufnr].output, 0, -1, false, { line })
+            else
+              vim.api.nvim_buf_set_lines(ShellBuffers[bufnr].output, -1, -1, false, { line })
+            end
+            linenr = linenr + 1
           end
         end
-      })
+        handle:close()
+      end
     end
   end,
 
