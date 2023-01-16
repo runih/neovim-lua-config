@@ -97,6 +97,15 @@ return {
     builtin.current_buffer_fuzzy_find(theme)
   end,
 
+  command_history = function ()
+    local theme = require("telescope.themes").get_dropdown({
+      previewer = false,
+      prompt_prefix = 'Command : ',
+      winblend=10
+    })
+    builtin.command_history(theme)
+  end,
+
   nvim_config = function ()
     -- List nvim config files
     builtin.find_files({cwd="~/.config/nvim"})
