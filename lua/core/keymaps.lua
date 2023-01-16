@@ -54,6 +54,9 @@ if telescope_tabs_loaded then
   keymap.set("n", "<leader>t", telescope_tabs.list_tabs,                  { desc = "List [T]abs" })
 end
 
+-- JSON formatting
+keymap.set("n", "<leader>Fj", "<cmd>JSONFormatter<cr>",                   { desc = "[F]ormat [J]son" })
+
 -- For Testing lua files
 keymap.set("n", "<leader>T", "<Plug>PlenaryTestFile",                     { desc = "Plenary[T]estFile" })
 
