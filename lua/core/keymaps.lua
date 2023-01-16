@@ -40,6 +40,7 @@ if builtin_loaded then
   keymap.set("n", "<leader>sc",       builtin.colorscheme,                { desc = "[S]Search [C]olorscheme" })
   keymap.set("n", "|",                myfunctions.find_in_current_buff,   { desc = "[|] Search in current buffer" })
   keymap.set("n", "<leader>sn",       myfunctions.nvim_config,            { desc = "[S]earch [N]eoVim configurations" })
+  keymap.set("n", "<C-.>",            myfunctions.command_history,        { desc = "Command History" })
   -- Git mappings
   keymap.set("n", "<leader>GB",       builtin.git_branches,               { desc = "[G]it [B]ranches" })
   keymap.set("n", "<leader>Gc",       builtin.git_commits,                { desc = "[G]it [C]ommits" })
