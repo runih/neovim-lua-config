@@ -17,8 +17,9 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "<leader>cd", "<cmd>lcd %:h<CR>")
 keymap.set("n", "<leader>so", myfunctions.load_current_luafile,           { desc = "[Lo]ading current lua file" })
 keymap.set("n", "<leader>!", myfunctions.execute_current_line,            { desc = "Execute current line in to a buffer" })
-keymap.set("n", "<leader>Bn", "<cmd>new<cr>",                              { desc = "Create a new buffer below" })
+keymap.set("n", "<leader>Bn", "<cmd>new<cr>",                             { desc = "Create a new buffer below" })
 keymap.set("n", "<leader>Bv", "<cmd>vnew<cr>",                            { desc = "Create a new buffer on the right side" })
+keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>",                          { desc = "Create a new Tab" })
 -- plugin keymaps
 
 -- vim-maximizer
@@ -52,7 +53,7 @@ end
 
 local telescope_tabs_loaded, telescope_tabs = pcall(require, "telescope-tabs")
 if telescope_tabs_loaded then
-  keymap.set("n", "<leader>t", telescope_tabs.list_tabs,                  { desc = "List [T]abs" })
+  keymap.set("n", "<leader>tt", telescope_tabs.list_tabs,                 { desc = "List [T]abs" })
 end
 
 -- JSON formatting
