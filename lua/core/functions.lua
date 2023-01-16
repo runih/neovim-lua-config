@@ -23,7 +23,11 @@ local function get_file_name(file)
   return file:match("^.+/(.+)$")
 end
 
-return {
+local functions = {
+  current_buffer_id = function ()
+    print("Current Buffer: " .. vim.api.nvim_get_current_buf())
+  end,
+
   load_current_luafile = function ()
     local currentfile = vim.api.nvim_buf_get_name(0)
     local filetype = vim.bo.filetype
@@ -38,6 +42,27 @@ return {
     if filetype == "vim" then
       vim.cmd("source " .. currentfile)
     end
+  end,
+
+  new_buffer = function ()
+    vim.api.nvim_command("new")
+  end,
+
+  new_vertical_buffer = function ()
+    vim.api.nvim_command("vnew")
+  end,
+
+  new_tab = function ()
+    vim.api.nvim_command("tabnew")
+  end,
+
+  edit_in_tab = function ()
+    vim.api.nvim_command("tab split")
+  end,
+
+  terminal = function ()
+    vim.api.nvim_command("vsplit")
+    vim.api.nvim_command("terminal")
   end,
 
   execute_current_line = function ()
@@ -126,3 +151,5 @@ return {
   end
 
 }
+
+return functions
