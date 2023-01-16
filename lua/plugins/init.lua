@@ -13,4 +13,5 @@ return {
 
   -- Themes
   'bluz71/vim-nightfly-guicolors',
+  'EdenEast/nightfox.nvim',
 }
