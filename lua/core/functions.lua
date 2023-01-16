@@ -1,3 +1,4 @@
+local modules = require("core.modules.execute")
 local builtin_loaded, builtin = pcall(require, "telescope.builtin")
 if not builtin_loaded then
   return
@@ -12,18 +13,16 @@ if not neotree_loaded then
   return
 end
 
-local function expand_cmd(cmd)
-  for index, value in ipairs(cmd) do
-    cmd[index] = vim.fn.expand(value)
-  end
-  return cmd
-end
-
 local function get_file_name(file)
   return file:match("^.+/(.+)$")
 end
 
-return {
+local functions = {
+  execute_current_line = modules.execute_current_line,
+  current_buffer_id = function ()
+    print("Current Buffer: " .. vim.api.nvim_get_current_buf())
+  end,
+
   load_current_luafile = function ()
     local currentfile = vim.api.nvim_buf_get_name(0)
     local filetype = vim.bo.filetype
@@ -31,6 +30,7 @@ return {
     print("Loaded " .. filetype .. " file " .. currentfile)
     if filetype == "lua" then
       if get_file_name(currentfile) == "keymaps.lua" then
+        package.loaded["core.modules.execute"] = nil
         package.loaded["core.functions"] = nil
       end
       vim.cmd("luafile " .. currentfile)
@@ -40,51 +40,25 @@ return {
     end
   end,
 
-  execute_current_line = function ()
-    local bufnr = vim.api.nvim_get_current_buf()
+  new_buffer = function ()
+    vim.api.nvim_command("new")
+  end,
 
-    if not ShellBuffers then
-      ShellBuffers = {}
-    end
+  new_vertical_buffer = function ()
+    vim.api.nvim_command("vnew")
+  end,
 
-    if not ShellBuffers[bufnr] then
-      ShellBuffers[bufnr] = {
-        output = vim.api.nvim_create_buf(true, false)
-      }
-    end
+  new_tab = function ()
+    vim.api.nvim_command("tabnew")
+  end,
 
-    if ShellBuffers[bufnr].output then
-      ShellBuffers[bufnr].scriptwin = vim.api.nvim_get_current_win()
-      local window_exists, _ = pcall(vim.api.nvim_win_get_config, ShellBuffers[bufnr].outputwin)
-      if not window_exists then
-        vim.cmd('split')
-        ShellBuffers[bufnr].outputwin = vim.api.nvim_get_current_win()
-        vim.api.nvim_win_set_buf(ShellBuffers[bufnr].outputwin, ShellBuffers[bufnr].output)
-        vim.api.nvim_set_current_win(ShellBuffers[bufnr].scriptwin)
-      end
+  edit_in_tab = function ()
+    vim.api.nvim_command("tab split")
+  end,
 
-      local lineNum = vim.api.nvim_win_get_cursor(0)[1]
-      local content = vim.api.nvim_buf_get_lines(bufnr, lineNum - 1, lineNum, false)
-      local cmd = {}
-      for str in string.gmatch(content[1], "%S+") do
-        table.insert(cmd, str)
-      end
-      vim.api.nvim_buf_set_lines(ShellBuffers[bufnr].output, 0, -1, false, {""})
-      cmd = expand_cmd(cmd)
-      vim.fn.jobstart(cmd, {
-        stdout_bufferd = true,
-        on_stdout = function (index, data)
-          if data then
-            vim.api.nvim_buf_set_lines(ShellBuffers[bufnr].output, index - 1, index -1, false, data)
-          end
-        end,
-        on_stderr = function (index, data)
-          if data then
-            vim.api.nvim_buf_set_lines(ShellBuffers[bufnr].output, index - 1, index - 1, false, data)
-          end
-        end
-      })
-    end
+  terminal = function ()
+    vim.api.nvim_command("vsplit")
+    vim.api.nvim_command("terminal")
   end,
 
   find_in_current_buff = function ()
@@ -126,3 +100,5 @@ return {
   end
 
 }
+
+return functions

@@ -7,6 +7,7 @@ return {
     end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'neovim/tree-sitter-vimdoc',
     }
   },
   'nvim-treesitter/playground',
