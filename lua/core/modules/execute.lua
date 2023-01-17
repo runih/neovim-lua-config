@@ -7,6 +7,7 @@ end
 
 return {
   execute_current_line = function ()
+    print("Executing command...")
     local bufnr = vim.api.nvim_get_current_buf()
 
     if not ShellBuffers then
@@ -40,6 +41,7 @@ return {
       if handle then
         local result = handle:read("*a")
         local linenr = 1
+        vim.api.nvim_buf_set_lines(ShellBuffers[bufnr].output, 0, -1, false, { "" })
         for line in result:gmatch("([^\n]*)\n?") do
           if line and string.len(line) > 0 then
             if linenr == 1 then
@@ -51,6 +53,9 @@ return {
           end
         end
         handle:close()
+         print("Executing done!")
+      else
+        print("Executing Failed!")
       end
     end
   end,
