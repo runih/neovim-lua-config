@@ -59,6 +59,9 @@ if telescope_tabs_loaded then
   keymap.set("n", "<leader>tt", telescope_tabs.list_tabs,                 { desc = "List [T]abs" })
 end
 
+-- Markdown
+keymap.set("n", "<leader>P", "<Plug>MarkdownPreviewToggle",               { desc = "Markdown [P]review" })
+
 -- JSON formatting
 keymap.set("n", "<leader>Fj", "<cmd>JSONFormatter<cr>",                   { desc = "[F]ormat [J]son" })
 
