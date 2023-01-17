@@ -16,13 +16,17 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 -- mine preferences
 keymap.set("n", "<leader>cd", "<cmd>lcd %:h<CR>")
 keymap.set("n", "<leader>so", myfunctions.load_current_luafile,           { desc = "[Lo]ading current lua file" })
-keymap.set("n", "<leader>!", myfunctions.execute_current_line,            { desc = "Execute current line in to a buffer" })
 keymap.set("n", "<leader>cb", myfunctions.current_buffer_id,              { desc = "[C]urrent [B]uffer id" })
 keymap.set("n", "<leader>Bn", myfunctions.new_buffer,                     { desc = "Create a new buffer below" })
 keymap.set("n", "<leader>Bv", myfunctions.new_vertical_buffer,            { desc = "Create a new buffer on the right side" })
 keymap.set("n", "<leader>tn", myfunctions.new_tab,                        { desc = "Create a new Tab" })
 keymap.set("n", "<leader>te", myfunctions.edit_in_tab,                    { desc = "Edit buffer en a new tab" })
 keymap.set("n", "<leader><cr>", myfunctions.terminal,                     { desc = "Terminal" })
+
+local cmd_loaded, cmd = pcall(require, "cmd")
+if cmd_loaded then
+  keymap.set("n", "<leader>!", cmd.execute_current_line,                  { desc = "Execute current line in to a buffer" })
+end
 -- plugin keymaps
 
 -- vim-maximizer

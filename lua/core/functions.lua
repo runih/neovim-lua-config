@@ -1,4 +1,3 @@
-local modules = require("core.modules.execute")
 local builtin_loaded, builtin = pcall(require, "telescope.builtin")
 if not builtin_loaded then
   return
@@ -18,7 +17,6 @@ local function get_file_name(file)
 end
 
 local functions = {
-  execute_current_line = modules.execute_current_line,
   current_buffer_id = function ()
     print("Current Buffer: " .. vim.api.nvim_get_current_buf())
   end,
@@ -30,7 +28,6 @@ local functions = {
     print("Loaded " .. filetype .. " file " .. currentfile)
     if filetype == "lua" then
       if get_file_name(currentfile) == "keymaps.lua" then
-        package.loaded["core.modules.execute"] = nil
         package.loaded["core.functions"] = nil
       end
       vim.cmd("luafile " .. currentfile)
