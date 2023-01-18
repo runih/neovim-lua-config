@@ -14,7 +14,7 @@ return {
         if not ok then
           return
         end
-        cmd.setup()
+        cmd.setup({})
       end
     }
 }
