@@ -22,6 +22,7 @@ keymap.set("n", "<leader>Bv", myfunctions.new_vertical_buffer,            { desc
 keymap.set("n", "<leader>tn", myfunctions.new_tab,                        { desc = "Create a new Tab" })
 keymap.set("n", "<leader>te", myfunctions.edit_in_tab,                    { desc = "Edit buffer en a new tab" })
 keymap.set("n", "<leader><cr>", myfunctions.terminal,                     { desc = "Terminal" })
+keymap.set("n", "<leader>W", "<cmd>w !sudo tee %<cr>",                    { desc = "Do a sudo [W]rite" })
 
 local cmd_loaded, cmd = pcall(require, "cmd")
 if cmd_loaded then
@@ -44,8 +45,8 @@ if builtin_loaded then
   keymap.set("n", "<leader>gs",       builtin.grep_string,                { desc = "[S]earch current [W]ord" })
   keymap.set("n", "<leader>lg",       builtin.live_grep,                  { desc = "[S]earch by [G]rep" })
   keymap.set("n", "<leader>sd",       builtin.diagnostics,                { desc = "[S]earch [D]iagnostics" })
-  keymap.set("n", "<leader>km",       builtin.keymaps,                    { desc = "[K]ey[M]aps" })
-  keymap.set("n", "<leader>cs",       builtin.colorscheme,                { desc = "[C]olor[S]cheme" })
+  keymap.set("n", "<leader>km",       myfunctions.keymaps,                { desc = "[K]ey[M]aps" })
+  keymap.set("n", "<leader>cs",       myfunctions.colorscheme,            { desc = "[C]olor[S]cheme" })
   keymap.set("n", "<leader>/",        myfunctions.find_in_current_buff,   { desc = "[|] Search in current buffer" })
   keymap.set("n", "<leader>sn",       myfunctions.nvim_config,            { desc = "[S]earch [N]eoVim configurations" })
   keymap.set("n", "<leader>.",        myfunctions.command_history,        { desc = "Command History" })
