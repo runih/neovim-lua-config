@@ -58,6 +58,30 @@ local functions = {
     vim.api.nvim_command("terminal")
   end,
 
+  keymaps = function ()
+    local theme = require("telescope.themes").get_dropdown({
+      previewer = false,
+      prompt_prefix = 'Search> ',
+      winblend=10,
+      layout_config = {
+        width = 0.9
+      }
+    })
+    builtin.keymaps(theme)
+  end,
+
+  colorscheme = function ()
+    local theme = require("telescope.themes").get_dropdown({
+      previewer = false,
+      prompt_prefix = '> ',
+      winblend=10,
+      --layout_config = {
+      --  width = 0.9
+      --}
+    })
+    builtin.colorscheme(theme)
+  end,
+
   find_in_current_buff = function ()
     -- search in current buffer
     local theme = require("telescope.themes").get_dropdown({
