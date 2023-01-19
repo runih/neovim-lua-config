@@ -2,6 +2,12 @@ local builtin_loaded, builtin = pcall(require, "telescope.builtin")
 if not builtin_loaded then
   return
 end
+
+local utils_loaded, utils = pcall(require, "telescope.utils")
+if not utils_loaded then
+  return
+end
+
 local dap_loaded, dap = pcall(require, "dap")
 if not dap_loaded then
   return
@@ -103,7 +109,11 @@ local functions = {
 
   nvim_config = function ()
     -- List nvim config files
-    builtin.find_files({cwd="~/.config/nvim"})
+    builtin.git_files({
+      cwd="~/.config/nvim",
+      prompt_title = 'NeoVim config',
+      prompt_prefix = ' > ',
+    })
   end,
 
   breakpoint_with_condition = function ()
@@ -118,6 +128,18 @@ local functions = {
     neotree.execute({
       reveal=true
     })
+  end,
+
+  project_files = function ()
+    local _, ret, stderr = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
+    local gopts = {}
+    gopts.prompt_title = 'Git files'
+    gopts.prompt_prefix = ' > '
+    if ret == 0 then
+      builtin.git_files(gopts)
+    else
+      builtin.find_files()
+    end
   end
 
 }
