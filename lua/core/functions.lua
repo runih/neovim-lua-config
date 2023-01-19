@@ -3,6 +3,11 @@ if not builtin_loaded then
   return
 end
 
+local action_state_loaded, action_state = pcall(require, "telescope.actions.state")
+if not action_state_loaded then
+  return
+end
+
 local utils_loaded, utils = pcall(require, "telescope.utils")
 if not utils_loaded then
   return
@@ -112,7 +117,10 @@ local functions = {
     builtin.git_files({
       cwd="~/.config/nvim",
       prompt_title = 'NeoVim config',
-      prompt_prefix = ' > ',
+      prompt_prefix = '  > ',
+      leyout = {
+        prompt_position='top'
+      }
     })
   end,
 
@@ -134,7 +142,7 @@ local functions = {
     local _, ret, stderr = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
     local gopts = {}
     gopts.prompt_title = 'Git files'
-    gopts.prompt_prefix = ' > '
+    gopts.prompt_prefix = '   > '
     if ret == 0 then
       builtin.git_files(gopts)
     else
