@@ -75,7 +75,8 @@ local functions = {
       prompt_prefix = 'Search> ',
       winblend=10,
       layout_config = {
-        width = 0.9
+        width = 0.6,
+        height = 0.5
       }
     })
     builtin.keymaps(theme)
@@ -98,7 +99,11 @@ local functions = {
     local theme = require("telescope.themes").get_dropdown({
       previewer = false,
       prompt_prefix = 'Search> ',
-      winblend=10
+      winblend=10,
+      layout_config = {
+        width = 0.6,
+        height = 0.5
+      }
     })
     builtin.current_buffer_fuzzy_find(theme)
   end,
@@ -118,8 +123,12 @@ local functions = {
       cwd="~/.config/nvim",
       prompt_title = 'NeoVim config',
       prompt_prefix = '  > ',
-      leyout = {
-        prompt_position='top'
+      winblend = 10,
+      sorting_strategy = 'ascending',
+      layout_config = {
+        prompt_position='top',
+        width = 0.6,
+        height = 0.5
       }
     })
   end,
@@ -140,13 +149,18 @@ local functions = {
 
   project_files = function ()
     local _, ret, stderr = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
-    local gopts = {}
-    gopts.prompt_title = 'Git files'
-    gopts.prompt_prefix = '   > '
+    local opts = {}
+    opts.winblend = 10
+    -- opts.sorting_strategy = 'ascending'
+    -- opts.layout_config = {
+    --   prompt_position = 'top'
+    -- }
     if ret == 0 then
-      builtin.git_files(gopts)
+    opts.prompt_title = 'Git files'
+    opts.prompt_prefix = '   > '
+      builtin.git_files(opts)
     else
-      builtin.find_files()
+      builtin.find_files(opts)
     end
   end
 
