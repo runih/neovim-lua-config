@@ -58,6 +58,24 @@ return {
               end
             }
           }
+        },
+        pickers = {
+          colorscheme = {
+            theme = 'dropdown',
+            prompt_prefix = '  > ',
+            previewer = false,
+            winblend=10,
+            mappings = {
+              i = {
+                ["<C-a>"] = function ()
+                  local entry = action_state.get_selected_entry()
+                  if entry then
+                    vim.cmd("colorscheme " .. entry[1])
+                  end
+                end
+              }
+            }
+          }
         }
       })
 
