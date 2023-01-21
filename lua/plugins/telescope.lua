@@ -66,8 +66,44 @@ return {
             previewer = false,
             winblend=10,
             mappings = {
+              n = {
+                ["a"] = function ()
+                  local entry = action_state.get_selected_entry()
+                  if entry then
+                    vim.cmd("colorscheme " .. entry[1])
+                  end
+                end,
+                ["<tab>"] = function (prompt_bufnr, map)
+                  actions.move_selection_next(prompt_bufnr)
+                  local entry = action_state.get_selected_entry()
+                  if entry then
+                    vim.cmd("colorscheme " .. entry[1])
+                  end
+                end,
+                ["<s-tab>"] = function (prompt_bufnr)
+                  actions.move_selection_previous(prompt_bufnr)
+                  local entry = action_state.get_selected_entry()
+                  if entry then
+                    vim.cmd("colorscheme " .. entry[1])
+                  end
+                end
+              },
               i = {
                 ["<C-a>"] = function ()
+                  local entry = action_state.get_selected_entry()
+                  if entry then
+                    vim.cmd("colorscheme " .. entry[1])
+                  end
+                end,
+                ["<tab>"] = function (prompt_bufnr)
+                  actions.move_selection_next(prompt_bufnr)
+                  local entry = action_state.get_selected_entry()
+                  if entry then
+                    vim.cmd("colorscheme " .. entry[1])
+                  end
+                end,
+                ["<s-tab>"] = function (prompt_bufnr)
+                  actions.move_selection_previous(prompt_bufnr)
                   local entry = action_state.get_selected_entry()
                   if entry then
                     vim.cmd("colorscheme " .. entry[1])
