@@ -24,6 +24,7 @@ keymap.set("n", "<leader>te", myfunctions.edit_in_tab,                    { desc
 keymap.set("n", "<leader><cr>", myfunctions.terminal,                     { desc = "Terminal" })
 keymap.set("n", "<leader>W", "<cmd>w !sudo tee %<cr>",                    { desc = "Do a sudo [W]rite" })
 keymap.set("n", "<leader>gp", myfunctions.project_files,                  { desc = "[P]roject Files" })
+keymap.set("n", "<leader>D", require('psql.dbselect').open,               { desc = "Select [D]atabase" })
 
 local cmd_loaded, cmd = pcall(require, "cmd")
 if cmd_loaded then
