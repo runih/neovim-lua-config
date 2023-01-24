@@ -36,7 +36,16 @@ return {
     },
 
     -- Useful status update for LSP
-    'j-hui/fidget.nvim',
+    {
+      'j-hui/fidget.nvim',
+      config = function ()
+        local ok, fidget = pcall(require, "fidget")
+        if not ok then
+          return
+        end
+        fidget.setup()
+      end
+    },
 
     -- Additional lua configuration, makes nvim stuff amazing
     'folke/neodev.nvim',
