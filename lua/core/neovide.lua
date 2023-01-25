@@ -3,9 +3,13 @@ local opt = vim.opt -- for conciseness
 -- Neovide settings
 opt.guifont = { "Hack Nerd Font Mono", ":h17" }
 -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-vim.g.neovide_transparency = 0
+vim.g.neovide_transparency = 0.9
 vim.g.transparency = 0.95
-vim.cmd("let g:neovide_background_color = '#001828'.printf('%x', float2nr(255 * g:transparency))")
+local normal_highlight = vim.api.nvim_get_hl_by_name("Normal", true)
+if normal_highlight and normal_highlight.background then
+  vim.g.neovide_background_color = string.format("%06x", normal_highlight.background)
+end
+-- vim.cmd("let g:neovide_background_color = '#001828'.printf('%x', float2nr(255 * g:transparency))")
 
 -- Floating Blur Amount
 vim.g.neovide_floating_blur_amount_x = 2.0

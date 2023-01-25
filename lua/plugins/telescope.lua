@@ -37,6 +37,21 @@ return {
         return
       end
 
+      local function change_colorschema(colorschema)
+        vim.cmd("colorscheme " .. colorschema)
+        if vim.g.neovide then
+          local normal_highlight = vim.api.nvim_get_hl_by_name("Normal", true)
+         if normal_highlight and normal_highlight.background then
+            vim.g.neovide_background_color = string.format("%06x", normal_highlight.background)
+          end
+          if vim.g.neovide_background_color then
+            print("Background Color: #" .. vim.g.neovide_background_color)
+          else
+            print("No Background Color!")
+          end
+        end
+      end
+
       telescope.setup({
         defaults = {
           -- prompt_prefix = "$ ",
@@ -70,21 +85,21 @@ return {
                 ["a"] = function ()
                   local entry = action_state.get_selected_entry()
                   if entry then
-                    vim.cmd("colorscheme " .. entry[1])
+                    change_colorschema(entry[1])
                   end
                 end,
                 ["<tab>"] = function (prompt_bufnr, map)
                   actions.move_selection_next(prompt_bufnr)
                   local entry = action_state.get_selected_entry()
                   if entry then
-                    vim.cmd("colorscheme " .. entry[1])
+                    change_colorschema(entry[1])
                   end
                 end,
                 ["<s-tab>"] = function (prompt_bufnr)
                   actions.move_selection_previous(prompt_bufnr)
                   local entry = action_state.get_selected_entry()
                   if entry then
-                    vim.cmd("colorscheme " .. entry[1])
+                    change_colorschema(entry[1])
                   end
                 end
               },
@@ -92,21 +107,21 @@ return {
                 ["<C-a>"] = function ()
                   local entry = action_state.get_selected_entry()
                   if entry then
-                    vim.cmd("colorscheme " .. entry[1])
+                    change_colorschema(entry[1])
                   end
                 end,
                 ["<tab>"] = function (prompt_bufnr)
                   actions.move_selection_next(prompt_bufnr)
                   local entry = action_state.get_selected_entry()
                   if entry then
-                    vim.cmd("colorscheme " .. entry[1])
+                    change_colorschema(entry[1])
                   end
                 end,
                 ["<s-tab>"] = function (prompt_bufnr)
                   actions.move_selection_previous(prompt_bufnr)
                   local entry = action_state.get_selected_entry()
                   if entry then
-                    vim.cmd("colorscheme " .. entry[1])
+                    change_colorschema(entry[1])
                   end
                 end
               }
