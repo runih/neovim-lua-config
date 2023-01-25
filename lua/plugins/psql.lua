@@ -1,5 +1,6 @@
 return {
   'runih/psql.nvim',
+  branch = 'development',
   config = function ()
     local ok, psql = pcall(require, "psql")
     if not ok then
