@@ -41,13 +41,8 @@ return {
         vim.cmd("colorscheme " .. colorschema)
         if vim.g.neovide then
           local normal_highlight = vim.api.nvim_get_hl_by_name("Normal", true)
-         if normal_highlight and normal_highlight.background then
-            vim.g.neovide_background_color = string.format("%06x", normal_highlight.background)
-          end
-          if vim.g.neovide_background_color then
-            print("Background Color: #" .. vim.g.neovide_background_color)
-          else
-            print("No Background Color!")
+          if normal_highlight and normal_highlight.background then
+            vim.g.neovide_background_color = string.format("%06x", (normal_highlight.background)) .. string.format("%x", (255 * vim.g.transparency))
           end
         end
       end
@@ -101,6 +96,26 @@ return {
                   if entry then
                     change_colorschema(entry[1])
                   end
+                end,
+                ["t"] = function ()
+                  vim.g.transparency = vim.g.transparency + 0.02
+                  if vim.g.transparency > 1 then
+                    vim.g.transparency = 1
+                  end
+                  local entry = action_state.get_selected_entry()
+                  if entry then
+                    change_colorschema(entry[1])
+                  end
+                end,
+                ["<S-t>"] = function ()
+                  vim.g.transparency = vim.g.transparency - 0.02
+                  if vim.g.transparency < 0 then
+                    vim.g.transparency = 0
+                  end
+                  local entry = action_state.get_selected_entry()
+                  if entry then
+                    change_colorschema(entry[1])
+                  end
                 end
               },
               i = {
@@ -123,7 +138,7 @@ return {
                   if entry then
                     change_colorschema(entry[1])
                   end
-                end
+                end,
               }
             }
           }
