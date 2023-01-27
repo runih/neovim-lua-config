@@ -131,6 +131,7 @@ local functions = {
 
   open_neotree = function ()
     neotree.execute({
+      dir=vim.fn.expand("~"),
       reveal=true
     })
   end,

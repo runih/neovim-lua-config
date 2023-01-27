@@ -1,5 +1,9 @@
 local opt = vim.opt -- for conciseness
 
+-- buffers
+-- Change the working directory to the buffer that gets open
+opt.autochdir = true
+
 -- line numbers
 opt.relativenumber = true
 opt.number = true
