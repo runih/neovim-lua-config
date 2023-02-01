@@ -2,7 +2,8 @@ local opt = vim.opt -- for conciseness
 
 -- buffers
 -- Change the working directory to the buffer that gets open
-opt.autochdir = true
+-- There seems to be a bug with this and Neo-Tree
+opt.autochdir = false
 
 -- line numbers
 opt.relativenumber = true
