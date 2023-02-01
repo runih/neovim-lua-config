@@ -26,6 +26,10 @@ keymap.set("n", "<leader>W", "<cmd>w !sudo tee %<cr>",                    { desc
 keymap.set("n", "<leader>gp", myfunctions.project_files,                  { desc = "[P]roject Files" })
 keymap.set("n", "<leader>D", require('psql.dbselect').open,               { desc = "Select [D]atabase" })
 
+-- Snippet
+keymap.set("i", "<C-Tab>", "<Plug>luasnip-jump-next")
+keymap.set("i", "<C-S-Tab>", "<Plug>luasnip-jump-prev")
+
 local cmd_loaded, cmd = pcall(require, "cmd")
 if cmd_loaded then
   keymap.set("n", "<leader>!", cmd.execute_current_line,                  { desc = "Execute current line in to a buffer" })
