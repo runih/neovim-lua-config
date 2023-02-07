@@ -98,9 +98,11 @@ return {
                   end
                 end,
                 ["t"] = function ()
-                  vim.g.transparency = vim.g.transparency + 0.02
-                  if vim.g.transparency > 1 then
-                    vim.g.transparency = 1
+                  if vim.g.transparency then
+                    vim.g.transparency = vim.g.transparency + 0.02
+                    if vim.g.transparency > 1 then
+                      vim.g.transparency = 1
+                    end
                   end
                   local entry = action_state.get_selected_entry()
                   if entry then
@@ -108,9 +110,11 @@ return {
                   end
                 end,
                 ["<S-t>"] = function ()
-                  vim.g.transparency = vim.g.transparency - 0.02
-                  if vim.g.transparency < 0 then
-                    vim.g.transparency = 0
+                  if vim.g.transparency then
+                    vim.g.transparency = vim.g.transparency - 0.02
+                    if vim.g.transparency < 0 then
+                      vim.g.transparency = 0
+                    end
                   end
                   local entry = action_state.get_selected_entry()
                   if entry then
