@@ -27,7 +27,7 @@ return {
             "html",
             "cssls",
             "tailwindcss",
-            "sumneko_lua",
+            "lua_ls",
             "pyright",
             "gopls"
           }
@@ -51,7 +51,8 @@ return {
     'folke/neodev.nvim',
     {
       'glepnir/lspsaga.nvim',
-      branch = 'main',
+      branch = "main",
+      event = "BufRead",
       config = function ()
         local ok, saga = pcall(require, "lspsaga")
         if not ok then
@@ -66,8 +67,7 @@ return {
             edit = "<CR>",
           }
         })
-
-      end
+      end,
     },
 
     -- configureing lsp servers
@@ -165,7 +165,7 @@ return {
       on_attach = on_attach
     })
 
-    lspconfig["sumneko_lua"].setup({
+    lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       settings = { -- custom setting for lua
