@@ -19,4 +19,11 @@ if not ok then
   return
 end
 
-return lazy.setup('plugins')
+return lazy.setup(
+  'plugins',
+  {
+    dev = {
+      path = "~/Projects/neovim-plugins",
+      fallback = true
+    }
+  })
