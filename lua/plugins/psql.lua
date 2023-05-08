@@ -1,5 +1,6 @@
 return {
   'runih/psql.nvim',
+  dev = true,
   branch = 'development',
   config = function ()
     local ok, psql = pcall(require, "psql")
@@ -10,6 +11,7 @@ return {
   end,
     dependencies = {
       'runih/cmd.nvim',
+      dev = true,
       config = function ()
         local ok, cmd = pcall(require, "cmd")
         if not ok then
