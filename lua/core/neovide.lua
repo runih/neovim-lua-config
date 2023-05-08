@@ -1,7 +1,7 @@
 local opt = vim.opt -- for conciseness
 
 -- Neovide settings
-opt.guifont = { "Hack Nerd Font Mono", ":h17" }
+opt.guifont = { "Hack_Nerd_Font_Mono:h17" }
 -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
 vim.g.neovide_transparency = 0.2
 vim.g.transparency = 0.99
