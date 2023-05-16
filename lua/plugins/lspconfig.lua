@@ -70,16 +70,7 @@ return {
       return
     end
 
-    mason_null_ls.setup({
-      ensure_installed = {
-        "prettier",
-        "stylua",
-        "eslint_d",
-        "pylint",
-        "yamlfmt",
-        "golangci-lint"
-      }
-    })
+    mason_null_ls.setup()
 
     local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
     if not lspconfig_ok then
