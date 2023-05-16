@@ -21,17 +21,7 @@ return {
           return
         end
 
-        mason_lspconfig.setup({
-          ensure_installed = {
-            "tsserver",
-            "html",
-            "cssls",
-            "tailwindcss",
-            "lua_ls",
-            "pyright",
-            "gopls"
-          }
-        })
+        mason_lspconfig.setup()
       end
     },
 
