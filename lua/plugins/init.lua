@@ -1,7 +1,4 @@
 return {
-  -- tmux & split window navigation
-  'christoomey/vim-tmux-navigator',
-
   'szw/vim-maximizer', -- maximizes and restores current wimdow
 
   -- essential plugins
