@@ -1,19 +1,13 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v2.x',
-  --keys = {
-  --  { '<leader>e', '<cmd>Neotree toggle<CR>', desc = 'NeoTree' },
-  --},
+  keys = {
+    { '<leader>e', '<cmd>Neotree toggle<CR>', desc = 'NeoTreeFloatToggle' },
+  },
   dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
   },
-  --opts = {
-  --  filesystem = {
-  --    follow_current_file = true,
-  --    hijack_netrw_behavior = 'open_current',
-  --  }
-  --},
 	config = function ()
 
 		-- If you want icons for diagnostic errors, you'll need to define them somewhere:
@@ -31,6 +25,19 @@ return {
 			return
 		end
     neo_tree.setup({
+      window = {
+        mappings = {
+          ['e'] = function ()
+            vim.api.nvim_exec('Neotree focus filesystem left', true)
+          end,
+          ['b'] = function ()
+            vim.api.nvim_exec('Neotree focus buffers left', true)
+          end,
+          ['g'] = function ()
+            vim.api.nvim_exec('Neotree focus git_status left', true)
+          end
+        }
+      },
       default_component_configs = {
         icon = {
           folder_empty = "󰜌",
@@ -69,6 +76,7 @@ return {
         statusline = true,
         sources = {
           { source = "filesystem", display_name = " 󰉓 Files " },
+          { source = "buffers", display_name = " 󰈙 Buffers " },
           { source = "git_status", display_name = " 󰊢 Git " },
         },
       },
