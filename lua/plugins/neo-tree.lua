@@ -2,7 +2,7 @@ return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v2.x',
   keys = {
-    { '<leader>e', '<cmd>Neotree toggle<CR>', desc = 'NeoTreeFloatToggle' },
+    { '<leader>e', '<cmd>NeoTreeFloat<CR>', desc = 'Toggle floating NeoTree' },
   },
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -25,6 +25,7 @@ return {
 			return
 		end
     neo_tree.setup({
+      popup_border_style = "rounded",
       window = {
         mappings = {
           ['e'] = function ()
@@ -80,6 +81,7 @@ return {
           { source = "git_status", display_name = " 󰊢 Git " },
         },
       },
+      vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
     })
 	end
 }
