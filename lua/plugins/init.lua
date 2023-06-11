@@ -2,7 +2,6 @@ return {
   'szw/vim-maximizer', -- maximizes and restores current wimdow
 
   -- essential plugins
-  'tpope/vim-surround',
   'vim-scripts/ReplaceWithRegister',
 
   -- icons
