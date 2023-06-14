@@ -28,6 +28,7 @@ return {
     -- Useful status update for LSP
     {
       'j-hui/fidget.nvim',
+      branch = "legacy",
       config = function ()
         local ok, fidget = pcall(require, "fidget")
         if not ok then
