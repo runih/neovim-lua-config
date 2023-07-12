@@ -8,17 +8,7 @@ return {
   {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
     dependencies = {
-      {
-        'nvim-lua/plenary.nvim',
-        -- config = function ()
-        --   local test_harness_ok, test_harness = pcall(require, "plenary.test_harness")
-        --   if not test_harness_ok then
-        --     return
-        --   end
-
-        --   test_harness.setup()
-        -- end
-      },
+      'nvim-lua/plenary.nvim',
       'LukasPietzschmann/telescope-tabs'
     },
     config = function()
@@ -49,7 +39,13 @@ return {
 
       telescope.setup({
         defaults = {
-          -- prompt_prefix = "$ ",
+          file_ignore_patterns = {
+            ".git/",
+            "node_modules/",
+            "venv",
+            ".venv",
+            "__pycache__"
+          },
           winblend = 10,
           mappings = {
             i = {
@@ -148,8 +144,6 @@ return {
           }
         }
       })
-
-      telescope.load_extension("fzf")
     end
   },
 
