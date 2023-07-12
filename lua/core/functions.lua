@@ -130,8 +130,17 @@ local functions = {
   end,
 
   open_neotree = function ()
+    vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
+    local gitrepo, _, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
+    local dir = vim.fn.expand('%:h')
+    if gitrepo then
+      local gitfolder, _, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--show-toplevel' })
+      if gitfolder then
+        dir = gitfolder[1]
+      end
+    end
     neotree.execute({
-      dir=vim.fn.expand("~"),
+      dir=dir,
       reveal=true
     })
   end,
