@@ -41,6 +41,7 @@ keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>")
 -- telescope
 local builtin_loaded, builtin = pcall(require, "telescope.builtin")
 if builtin_loaded then
+  keymap.set("n", "<leader>R",        builtin.registers,                  { desc = "[R]egisters" })
   keymap.set("n", "<leader>sB",       builtin.builtin,                    { desc = "[S]earch Telescope [B]uiltin" })
   keymap.set("n", "<leader><space>",  builtin.buffers,                    { desc = "[ ] Find existing buffers" })
   keymap.set("n", "<leader>fo",       builtin.oldfiles,                   { desc = "[F]ind recently [o]ld files" })
