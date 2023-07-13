@@ -1,17 +1,17 @@
-local border = {
-  { "╭", "LspFloatWinBorder" },
-  { "─", "LspFloatWinBorder" },
-  { "╮", "LspFloatWinBorder" },
-  { "│", "LspFloatWinBorder" },
-  { "╯", "LspFloatWinBorder" },
-  { "─", "LspFloatWinBorder" },
-  { "╰", "LspFloatWinBorder" },
-  { "│", "LspFloatWinBorder" },
-}
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = border, --“rounded”,
-})
-
+-- local border = {
+--   { "╭", "LspFloatWinBorder" },
+--   { "─", "LspFloatWinBorder" },
+--   { "╮", "LspFloatWinBorder" },
+--   { "│", "LspFloatWinBorder" },
+--   { "╯", "LspFloatWinBorder" },
+--   { "─", "LspFloatWinBorder" },
+--   { "╰", "LspFloatWinBorder" },
+--   { "│", "LspFloatWinBorder" },
+-- }
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+--   border = border, --“rounded”,
+-- })
+-- 
 return {
   'folke/noice.nvim',
   event = 'VeryLazy',
