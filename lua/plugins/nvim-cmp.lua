@@ -15,21 +15,29 @@ return {
   config = function()
     local cmp_ok, cmp = pcall(require, "cmp")
     if not cmp_ok then
+      print('cmp not loaded')
       return
     end
 
     local luasnip_ok, luasnip = pcall(require, "luasnip")
     if not luasnip_ok then
+      print('luasnip not loaded')
       return
     end
 
     local lspkind_ok, lspkind = pcall(require, "lspkind")
     if not lspkind_ok then
+      print('lspkind not loaded')
       return
     end
 
     -- load friendly-snippets
-    require("luasnip/loaders/from_vscode").lazy_load()
+    local from_vscode_ok, from_vscode = pcall(require, "luasnip/loaders/from_vscode")
+    if not from_vscode_ok then
+      print('from_vscode not loaded!')
+      return
+    end
+    from_vscode.lazy_load()
 
     vim.opt.completeopt = "menu,menuone,noselect"
 
