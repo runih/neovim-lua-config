@@ -4,7 +4,7 @@ return {
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
     'kdheepak/lazygit.nvim',
-    'TimUntersberger/neogit',
+    'NeogitOrg/neogit',
     'tanvirtin/vgit.nvim',
   },
 
