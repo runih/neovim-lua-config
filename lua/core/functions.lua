@@ -27,6 +27,11 @@ local function get_file_name(file)
   return file:match("^.+/(.+)$")
 end
 
+local function git_folder()
+  local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
+  return ret == 0
+end
+
 local functions = {
   current_buffer_id = function ()
     print("Current Buffer: " .. vim.api.nvim_get_current_buf())
@@ -129,11 +134,11 @@ local functions = {
     dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
   end,
 
+
   open_neotree = function ()
     vim.api.nvim_set_current_dir(vim.fn.expand("%:h"))
-    local gitrepo, _, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
     local dir = vim.fn.expand('%:h')
-    if gitrepo then
+    if git_folder() then
       local gitfolder, _, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--show-toplevel' })
       if gitfolder then
         dir = gitfolder[1]
@@ -146,16 +151,15 @@ local functions = {
   end,
 
   project_files = function ()
-    local _, ret, stderr = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
     local opts = {}
     opts.winblend = 10
     -- opts.sorting_strategy = 'ascending'
     -- opts.layout_config = {
     --   prompt_position = 'top'
     -- }
-    if ret == 0 then
-    opts.prompt_title = 'Git files'
-    opts.prompt_prefix = '   > '
+    if git_folder() then
+      opts.prompt_title = 'Git files'
+      opts.prompt_prefix = '   > '
       builtin.git_files(opts)
     else
       builtin.find_files(opts)
