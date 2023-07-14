@@ -1,5 +1,7 @@
 return {
   'lewis6991/gitsigns.nvim',
+  lazy = false,
+  config = true,
   dependencies = {
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
