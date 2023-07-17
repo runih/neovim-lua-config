@@ -1,6 +1,6 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
-  branch = 'v2.x',
+  branch = 'v3.x',
   keys = {
     { '<leader>e', '<cmd>NeoTreeFloat<CR>', desc = 'Toggle floating NeoTree' },
   },
