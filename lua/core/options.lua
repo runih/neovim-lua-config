@@ -10,6 +10,14 @@ opt.relativenumber = true
 opt.number = true
 
 -- tab & indentation
+opt.listchars = {
+  tab = "┊ ",
+  eol = "↵",
+  trail = "●",
+  extends = "…",
+  precedes = "…",
+  space = "·"
+}
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
