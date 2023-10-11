@@ -48,17 +48,17 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-local on_attach = function(client, bufnr)
-  -- keybind options
-  local opts = { noremap = true, silent = true, buffer = bufnr }
-end
+-- local on_attach = function(client, bufnr)
+--   -- keybind options
+--   local opts = { noremap = true, silent = true, buffer = bufnr }
+-- end
 
 local handlers = {
   function(server_name) -- default handler (optional)
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     require("lspconfig")[server_name].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+--      on_attach = on_attach,
     })
   end,
   ["pyright"] = function()
@@ -66,7 +66,7 @@ local handlers = {
     local util = require("lspconfig/util")
     require("lspconfig").pyright.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+--      on_attach = on_attach,
       root_dir = function(fname)
         return util.root_pattern(".git", ".pylintrc", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(
           fname
@@ -78,7 +78,7 @@ local handlers = {
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     require("lspconfig").lua_ls.setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+--      on_attach = on_attach,
       settings = {
         Lua = {
           diagnostics = {
@@ -103,4 +103,23 @@ return {
     automatic_installation = true,
     handlers = handlers,
   },
+  config = function ()
+    local mason_lsponfig_ok, mason_lsponfig = pcall(require, "mason-lspconfig")
+    if not mason_lsponfig_ok then
+      return
+    end
+    local lspconfig_ok, lspconfig = pcall(require, "lspconfig")
+    if not lspconfig_ok then
+      return
+    end
+    mason_lsponfig.setup({
+      ensure_installed = { "volar" }
+    })
+    mason_lsponfig.setup_handlers({
+      function(server_name)
+        local server_config = {}
+        lspconfig[server_name].setup(server_config)
+      end
+    })
+  end
 }

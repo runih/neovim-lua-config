@@ -72,7 +72,7 @@ return {
         name = "launch - netcoredbg",
         request = "launch",
         program = function ()
-          return vim.fn.input('Select the dll to debug', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+          return vim.fn.input( 'Select the dll to debug' .. vim.fn.getcwd() .. '/bin/Debug/' .. 'file')
         end,
       },
     }
@@ -109,7 +109,7 @@ return {
         type = "cppdbg",
         request = "launch",
         program = function ()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+          return vim.fn.input('Path to executable: ' .. vim.fn.getcwd() .. '/' .. 'file')
         end,
         cwd = '${workspaceFolder}',
         stopAtEntry = true,
@@ -123,14 +123,14 @@ return {
         miDebuggerPath = '/usr/bin/gdb',
         cwd = '${workspaceFolder}',
         program = function ()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+          return vim.fn.input('Path to executable: ' .. vim.fn.getcwd() .. '/' .. 'file')
         end,
       }
     }
 
     dapui.setup()
 
-    dap_virtual_text.setup()
+    dap_virtual_text.setup({})
 
     dapgo.setup()
 

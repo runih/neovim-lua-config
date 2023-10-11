@@ -2,3 +2,4 @@ plugin/*
 lazy-lock.json
 lua/plugins/local.lua
 colorscheme
+.luarc.json

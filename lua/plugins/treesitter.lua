@@ -19,6 +19,9 @@ return {
     end
 
     treesitter.setup({
+      modules = {},
+      sync_install = true,
+      ignore_install = {},
       highlight = {
         enable = true
       },
@@ -41,6 +44,7 @@ return {
         "svelte",
         "tsx",
         "typescript",
+        "volar",
         "vim",
         "vue",
         "yaml",

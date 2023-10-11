@@ -21,7 +21,7 @@ return {
       return
     end
 
-    neogit.setup()
+    neogit.setup({})
 
     local vgit_ok, vgit = pcall(require, "vgit")
     if not vgit_ok then

@@ -5,18 +5,18 @@ return {
   },
   opts = {
     ensure_installed = {
-      "stylua", -- lua formatter
-      "pylint", -- python linter
-      "pyright", -- python language server
       "black", -- python formatter
-      "hadolint", -- dockerfile
       "gitlint", -- git commit messages
-      "jq", --json formatter
       "goimports", -- go formatter
+      "hadolint", -- dockerfile
+      "jq", --json formatter
       "markdownlint", -- markdown formatter/linter
       "nixfmt", -- nixfmt is a formatter for Nix code, intended to apply a uniform style.
-      "statix", -- Lints and suggestions for the nix programming language.
+      "pylint", -- python linter
+      "pyright", -- python language server
       "shfmt", -- shell scritps
+      "statix", -- Lints and suggestions for the nix programming language.
+      "stylua", -- lua formatter
       "yamllint",
     },
     automatic_installation = true,
