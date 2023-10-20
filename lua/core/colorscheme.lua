@@ -4,8 +4,4 @@ if f then
   colorscheme = f:read()
   f:close()
 end
-
-local ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
-if not ok then
-  return
-end
+vim.cmd('colorscheme ' .. colorscheme)
