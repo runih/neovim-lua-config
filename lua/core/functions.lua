@@ -164,8 +164,22 @@ local functions = {
     else
       builtin.find_files(opts)
     end
-  end
+  end,
 
+  toggle_background = function()
+    if vim.o.background == "dark" then
+      vim.o.background = "light"
+    else
+      vim.o.background = "dark"
+    end
+    if vim.g.neovide then
+      local normal_highlight = vim.api.nvim_get_hl_by_name("Normal", true)
+      if normal_highlight and normal_highlight.background then
+        vim.g.neovide_background_color = string.format("%06x", normal_highlight.background)
+          .. string.format("%x", (255 * vim.g.transparency))
+      end
+    end
+  end,
 }
 
 return functions

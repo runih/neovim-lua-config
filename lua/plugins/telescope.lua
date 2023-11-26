@@ -27,6 +27,12 @@ return {
         return
       end
 
+      local myfunctions_loaded, myfunctions = pcall(require, "core.functions")
+      if not myfunctions_loaded then
+        print("My functions not loaded!")
+        return
+      end
+
       local function change_colorschema(colorschema)
         vim.cmd("colorscheme " .. colorschema)
         if vim.g.neovide then
@@ -116,7 +122,10 @@ return {
                   if entry then
                     change_colorschema(entry[1])
                   end
-                end
+                end,
+                ["b"] = function()
+                  myfunctions.toggle_background()
+                end,
               },
               i = {
                 ["<C-a>"] = function ()
@@ -138,6 +147,9 @@ return {
                   if entry then
                     change_colorschema(entry[1])
                   end
+                end,
+                ["<C-b>"] = function()
+                  myfunctions.toggle_background()
                 end,
               }
             }

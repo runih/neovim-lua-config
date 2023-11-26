@@ -5,6 +5,8 @@ opt.guifont = { "Hack_Nerd_Font_Mono:h17" }
 -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
 vim.g.neovide_transparency = 0.5
 vim.g.transparency = 0.99
+vim.g.neovide_transparency = 0.8
+vim.g.transparency = 0.8
 local normal_highlight = vim.api.nvim_get_hl_by_name("Normal", true)
 if normal_highlight and normal_highlight.background then
 	vim.g.neovide_background_color = string.format("%06x", normal_highlight.background)
