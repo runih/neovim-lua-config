@@ -28,12 +28,6 @@ return {
 				return
 			end
 
-			local colorscheme_loaded, colorscheme = pcall(require, "core.colorscheme")
-			if not colorscheme_loaded then
-				print("My functions not loaded!")
-				return
-			end
-
 			telescope.setup({
 				defaults = {
 					file_ignore_patterns = {
@@ -61,102 +55,7 @@ return {
 						},
 					},
 				},
-				pickers = {
-					colorscheme = {
-						theme = "dropdown",
-						prompt_prefix = "  > ",
-						previewer = false,
-						winblend = 10,
-						mappings = {
-							n = {
-								["a"] = function()
-									local entry = action_state.get_selected_entry()
-									if entry then
-										colorscheme.change(entry[1])
-									end
-								end,
-								["<tab>"] = function(prompt_bufnr, map)
-									actions.move_selection_next(prompt_bufnr)
-									local entry = action_state.get_selected_entry()
-									if entry then
-										colorscheme.change(entry[1])
-									end
-								end,
-								["<s-tab>"] = function(prompt_bufnr)
-									actions.move_selection_previous(prompt_bufnr)
-									local entry = action_state.get_selected_entry()
-									if entry then
-										colorscheme.change(entry[1])
-									end
-								end,
-								["t"] = function()
-									if vim.g.transparency then
-										vim.g.transparency = vim.g.transparency + 0.02
-										if vim.g.transparency > 1 then
-											vim.g.transparency = 1
-										end
-									end
-									local entry = action_state.get_selected_entry()
-									if entry then
-										colorscheme.change(entry[1])
-									end
-								end,
-								["<S-t>"] = function()
-									if vim.g.transparency then
-										vim.g.transparency = vim.g.transparency - 0.02
-										if vim.g.transparency < 0 then
-											vim.g.transparency = 0
-										end
-									end
-									local entry = action_state.get_selected_entry()
-									if entry then
-										colorscheme.change(entry[1])
-									end
-								end,
-								["b"] = function()
-									colorscheme.toggle_background()
-								end,
-								["S"] = function()
-									local entry = action_state.get_selected_entry()
-									if entry then
-										colorscheme.save(entry[1])
-									end
-								end,
-							},
-							i = {
-								["<C-a>"] = function()
-									local entry = action_state.get_selected_entry()
-									if entry then
-										colorscheme.change(entry[1])
-									end
-								end,
-								["<tab>"] = function(prompt_bufnr)
-									actions.move_selection_next(prompt_bufnr)
-									local entry = action_state.get_selected_entry()
-									if entry then
-										colorscheme.change(entry[1])
-									end
-								end,
-								["<s-tab>"] = function(prompt_bufnr)
-									actions.move_selection_previous(prompt_bufnr)
-									local entry = action_state.get_selected_entry()
-									if entry then
-										colorscheme.change(entry[1])
-									end
-								end,
-								["<C-b>"] = function()
-									colorscheme.toggle_background()
-								end,
-								["<C-s>"] = function()
-									local entry = action_state.get_selected_entry()
-									if entry then
-										colorscheme.save(entry[1])
-									end
-								end,
-							},
-						},
-					},
-				},
+				pickers = {},
 			})
 		end,
 	},

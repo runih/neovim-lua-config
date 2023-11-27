@@ -5,12 +5,12 @@ if not myfunctions_loaded then
 	return
 end
 
-local colorscheme_loaded, colorscheme = pcall(require, "core.colorscheme")
-if not colorscheme_loaded then
-	print("Core Colorschema not loaded!")
-end
-
 local keymap = vim.keymap -- for conciseness
+
+local colorscheme_loaded, colorscheme = pcall(require, "colorscheme-picker")
+if colorscheme_loaded then
+	keymap.set("n", "<leader>bt", colorscheme.toggle_background, { desc = "[B]ackground [T]toggle" })
+end
 
 -- general keymaps
 
@@ -29,7 +29,6 @@ keymap.set("n", "<leader>te", myfunctions.edit_in_tab, { desc = "Edit buffer en 
 keymap.set("n", "<leader><cr>", myfunctions.terminal, { desc = "Terminal" })
 keymap.set("n", "<leader>W", "<cmd>w !sudo tee %<cr>", { desc = "Do a sudo [W]rite" })
 keymap.set("n", "<leader>gp", myfunctions.project_files, { desc = "[P]roject Files" })
-keymap.set("n", "<leader>bt", colorscheme.toggle_background, { desc = "[B]ackground [T]toggle" })
 
 -- Snippet
 keymap.set("i", "<C-Tab>", "<Plug>luasnip-jump-next")

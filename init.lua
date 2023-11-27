@@ -8,7 +8,3 @@ if vim.g.neovide then
 elseif vim.fn.has("gui_vimr") then
 	require("core.vimr")
 end
-local colorscheme_loaded, colorscheme = pcall(require, "core.colorscheme")
-if colorscheme_loaded then
-	colorscheme.set_default_colorscheme()
-end
