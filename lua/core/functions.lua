@@ -3,11 +3,6 @@ if not builtin_loaded then
 	return
 end
 
-local action_state_loaded, action_state = pcall(require, "telescope.actions.state")
-if not action_state_loaded then
-	return
-end
-
 local utils_loaded, utils = pcall(require, "telescope.utils")
 if not utils_loaded then
 	return
