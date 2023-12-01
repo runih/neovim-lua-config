@@ -12,6 +12,7 @@ return {
 		end
 		colorscheme.setup({
 			default_colorscheme = "bamboo",
+			keymapping = "<leader>cs",
 		})
 		colorscheme.set_default_colorscheme()
 	end,
