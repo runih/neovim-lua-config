@@ -57,7 +57,6 @@ if builtin_loaded then
 	keymap.set("n", "<leader>lg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 	keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 	keymap.set("n", "<leader>km", myfunctions.keymaps, { desc = "[K]ey[M]aps" })
-	keymap.set("n", "<leader>cs", builtin.colorscheme, { desc = "[C]olor[S]cheme" })
 	keymap.set("n", "<leader>/", myfunctions.find_in_current_buff, { desc = "[|] Search in current buffer" })
 	keymap.set("n", "<leader>sn", myfunctions.nvim_config, { desc = "[S]earch [N]eoVim configurations" })
 	keymap.set("n", "<leader>.", myfunctions.command_history, { desc = "Command History" })
