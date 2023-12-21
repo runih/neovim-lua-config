@@ -11,6 +11,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"LukasPietzschmann/telescope-tabs",
+			"nvim-telescope/telescope-ui-select.nvim",
 		},
 		config = function()
 			local telescope_ok, telescope = pcall(require, "telescope")
@@ -56,7 +57,13 @@ return {
 					},
 				},
 				pickers = {},
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({}),
+					},
+				},
 			})
+			telescope.load_extension("ui-select")
 		end,
 	},
 }
