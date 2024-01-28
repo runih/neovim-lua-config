@@ -48,17 +48,19 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
--- local on_attach = function(client, bufnr)
---   -- keybind options
---   local opts = { noremap = true, silent = true, buffer = bufnr }
--- end
+local on_attach = function(client, bufnr)
+	-- keybind options
+	local opts = { noremap = true, silent = true, buffer = bufnr }
+	client.server_capabilities.signatureHelpProvider = false
+	on_attach(client, bufnr)
+end
 
 local handlers = {
 	function(server_name) -- default handler (optional)
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		require("lspconfig")[server_name].setup({
 			capabilities = capabilities,
-			--      on_attach = on_attach,
+			on_attach = on_attach,
 		})
 	end,
 	["pyright"] = function()
@@ -66,7 +68,7 @@ local handlers = {
 		local util = require("lspconfig/util")
 		require("lspconfig").pyright.setup({
 			capabilities = capabilities,
-			--      on_attach = on_attach,
+			on_attach = on_attach,
 			root_dir = function(fname)
 				return util.root_pattern(
 					".git",
@@ -83,7 +85,7 @@ local handlers = {
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		require("lspconfig").lua_ls.setup({
 			capabilities = capabilities,
-			--      on_attach = on_attach,
+			on_attach = on_attach,
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -91,6 +93,13 @@ local handlers = {
 					},
 				},
 			},
+		})
+	end,
+	["clangd"] = function()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		require("lspconfig").clangd.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
 		})
 	end,
 }
