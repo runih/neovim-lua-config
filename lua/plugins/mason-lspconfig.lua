@@ -132,9 +132,7 @@ return {
 			print("Mason Tool Installer not loaded")
 			return
 		end
-		mason_lsponfig.setup({
-			ensure_installed = { "volar" },
-		})
+		mason_lsponfig.setup({})
 		mason_lsponfig.setup_handlers({
 			function(server_name)
 				local server_config = {}
