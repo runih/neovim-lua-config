@@ -31,9 +31,6 @@ local config_file = io.open(vim.fn.stdpath("config") .. "/lua/local/setup.lua")
 if config_file then
 	config_file:close()
 	require("local.setup")
-	print("Local config loaded!")
-else
-	print("Local config not found")
 end
 
 return lazy_setup
