@@ -1,4 +1,5 @@
 plugin/*
+lua/local/*
 lazy-lock.json
 lua/plugins/local.lua
 colorscheme

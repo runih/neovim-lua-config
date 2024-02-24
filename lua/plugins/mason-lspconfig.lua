@@ -141,15 +141,6 @@ return {
 				lspconfig[server_name].setup(server_config)
 			end,
 		})
-		mason_tool_installer.setup({
-			ensure_installed = {
-				"prettier",
-				"stylua",
-				"isort",
-				"black",
-				"pylint",
-				"eslint_d",
-			},
-		})
+		mason_tool_installer.setup({})
 	end,
 }
