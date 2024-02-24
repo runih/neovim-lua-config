@@ -1,9 +1,7 @@
 return {
   'folke/noice.nvim',
   event = 'VeryLazy',
-  opts = {
-
-  },
+  opts = {},
   dependencies = {
     'MunifTanjim/nui.nvim',
     'rcarriga/nvim-notify',
@@ -11,7 +9,7 @@ return {
   config = function()
     local ok, noice = pcall(require, 'noice')
     if not ok then
-      print("Noice did not load!")
+      print('Noice did not load!')
       return
     end
 
@@ -31,7 +29,7 @@ return {
         long_message_to_split = true, -- long messages will be sent to a split
         inc_rename = false, -- enable an input dialog for inc-rename.nvim
         lsp_doc_boarder = false, -- add a border to hover docs and signature help
-      }
+      },
     })
-  end
+  end,
 }

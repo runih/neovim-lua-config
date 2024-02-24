@@ -2,22 +2,22 @@ return {
   -- tmux & split window navigation
   'alexghergh/nvim-tmux-navigation',
   lazy = false,
-  config = function ()
+  config = function()
     local ok, tmux_nav = pcall(require, 'nvim-tmux-navigation')
     if not ok then
       return
     end
 
-    tmux_nav.setup {
-      disable_when_zoomed = true -- defaults to false
-    }
+    tmux_nav.setup({
+      disable_when_zoomed = true, -- defaults to false
+    })
 
     local keymap = vim.keymap
-    keymap.set('n', "<C-h>",      tmux_nav.NvimTmuxNavigateLeft)
-    keymap.set('n', "<C-j>",      tmux_nav.NvimTmuxNavigateDown)
-    keymap.set('n', "<C-k>",      tmux_nav.NvimTmuxNavigateUp)
-    keymap.set('n', "<C-l>",      tmux_nav.NvimTmuxNavigateRight)
-    keymap.set('n', "<C-\\>",     tmux_nav.NvimTmuxNavigateLastActive)
-    keymap.set('n', "<C-Space>",  tmux_nav.NvimTmuxNavigateNext)
+    keymap.set('n', '<C-h>', tmux_nav.NvimTmuxNavigateLeft)
+    keymap.set('n', '<C-j>', tmux_nav.NvimTmuxNavigateDown)
+    keymap.set('n', '<C-k>', tmux_nav.NvimTmuxNavigateUp)
+    keymap.set('n', '<C-l>', tmux_nav.NvimTmuxNavigateRight)
+    keymap.set('n', '<C-\\>', tmux_nav.NvimTmuxNavigateLastActive)
+    keymap.set('n', '<C-Space>', tmux_nav.NvimTmuxNavigateNext)
   end,
 }

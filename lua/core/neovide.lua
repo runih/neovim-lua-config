@@ -1,16 +1,18 @@
 local opt = vim.opt -- for conciseness
 
 -- Neovide settings
-opt.guifont = { "Hack_Nerd_Font_Mono:h17" }
+opt.guifont = { 'Hack_Nerd_Font_Mono:h17' }
 -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
 vim.g.neovide_transparency = 0.5
 vim.g.transparency = 0.99
 vim.g.neovide_transparency = 0.8
 vim.g.transparency = 0.8
-local normal_highlight = vim.api.nvim_get_hl_by_name("Normal", true)
+local normal_highlight = vim.api.nvim_get_hl_by_name('Normal', true)
 if normal_highlight and normal_highlight.background then
-	vim.g.neovide_background_color = string.format("%06x", normal_highlight.background)
-		.. string.format("%x", (255 * vim.g.transparency))
+  vim.g.neovide_background_color = string.format(
+    '%06x',
+    normal_highlight.background
+  ) .. string.format('%x', (255 * vim.g.transparency))
 end
 -- vim.cmd("let g:neovide_background_color = '#001828'.printf('%x', float2nr(255 * g:transparency))")
 
@@ -43,7 +45,7 @@ vim.g.neovide_cursor_unfocused_outline_width = 0.125
 
 -- Cursor Particles
 -- Modes: railgun, torpedo, pixiedust, sonicboom, ripple, wireframe
-vim.g.neovide_cursor_vfx_mode = "wireframe"
+vim.g.neovide_cursor_vfx_mode = 'wireframe'
 vim.g.neovide_cursor_vfx_opacity = 200.0
 vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
 vim.g.neovide_cursor_vfx_particle_density = 7.0

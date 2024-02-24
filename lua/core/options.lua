@@ -11,12 +11,12 @@ opt.number = true
 
 -- tab & indentation
 opt.listchars = {
-  tab = "┊ ",
-  eol = "↵",
-  trail = "●",
-  extends = "…",
-  precedes = "…",
-  space = "·"
+  tab = '┊ ',
+  eol = '↵',
+  trail = '●',
+  extends = '…',
+  precedes = '…',
+  space = '·',
 }
 opt.tabstop = 2
 opt.shiftwidth = 2
@@ -34,15 +34,15 @@ opt.smartcase = true
 opt.cursorline = true
 
 opt.termguicolors = true
-opt.background = "dark"
-opt.signcolumn = "yes"
+opt.background = 'dark'
+opt.signcolumn = 'yes'
 opt.showtabline = 0
 
 -- backspace
-opt.backspace = "indent,eol,start"
+opt.backspace = 'indent,eol,start'
 
 -- clipboard
-opt.clipboard:append("unnamedplus")
+opt.clipboard:append('unnamedplus')
 
 -- split window
 opt.splitright = true
@@ -51,10 +51,12 @@ opt.splitbelow = true
 -- opt.iskeyword:append("-")
 
 -- Open help window in a vertical split to the right.
-vim.api.nvim_create_autocmd("BufWinEnter", {
-    group = vim.api.nvim_create_augroup("help_window_right", {}),
-    pattern = { "*.txt" },
-    callback = function()
-        if vim.o.filetype == 'help' then vim.cmd.wincmd("L") end
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  group = vim.api.nvim_create_augroup('help_window_right', {}),
+  pattern = { '*.txt' },
+  callback = function()
+    if vim.o.filetype == 'help' then
+      vim.cmd.wincmd('L')
     end
+  end,
 })

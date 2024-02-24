@@ -7,32 +7,32 @@ vim.diagnostic.config({
   float = {
     -- UI.
     header = false,
-    border = "rounded",
+    border = 'rounded',
     focusable = true,
   },
 })
 
 return {
-  "hrsh7th/nvim-cmp",
+  'hrsh7th/nvim-cmp',
   version = false, -- last release is way too old
-  event = "InsertEnter",
+  event = 'InsertEnter',
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
 
     -- snippets
     'L3MON4D3/LuaSnip',
-    "saadparwaiz1/cmp_luasnip",
+    'saadparwaiz1/cmp_luasnip',
     'rafamadriz/friendly-snippets',
   },
   opts = function()
-    local cmp = require("cmp")
+    local cmp = require('cmp')
     return {
       preselect = cmp.PreselectMode.None,
       snippet = {
         expand = function(args)
-          require("luasnip").lsp_expand(args.body)
+          require('luasnip').lsp_expand(args.body)
         end,
       },
       window = {
@@ -40,20 +40,24 @@ return {
         documentation = cmp.config.window.bordered(),
       },
       sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "path" },
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'buffer' },
+        { name = 'path' },
       }),
       mapping = cmp.mapping.preset.insert({
-        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ["<S-CR>"] = cmp.mapping.confirm({
+        ['<C-j>'] = cmp.mapping.select_next_item({
+          behavior = cmp.SelectBehavior.Insert,
+        }),
+        ['<C-k>'] = cmp.mapping.select_prev_item({
+          behavior = cmp.SelectBehavior.Insert,
+        }),
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<S-CR>'] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,
         }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.

@@ -1,7 +1,7 @@
 return {
-  "goolord/alpha-nvim",
+  'goolord/alpha-nvim',
   dependencies = {
-    "kyazdani42/nvim-web-devicons",
+    'kyazdani42/nvim-web-devicons',
   },
   config = function()
     local ok, alpha = pcall(require, 'alpha')
@@ -15,5 +15,5 @@ return {
     end
 
     alpha.setup(theme.config)
-  end
+  end,
 }
