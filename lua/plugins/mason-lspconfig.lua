@@ -1,11 +1,11 @@
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>f', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set(
   'n',
-  '<space>q',
+  '<leader>q',
   vim.diagnostic.setloclist,
   { desc = 'Location list' }
 )
@@ -19,6 +19,9 @@ local border = {
   { '╰', 'LspFloatWinBorder' },
   { '│', 'LspFloatWinBorder' },
 }
+
+local builtin = require('telescope.builtin')
+
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = border, --"rounded",
 })
@@ -58,35 +61,35 @@ vim.api.nvim_create_autocmd('LspAttach', {
     )
     vim.keymap.set(
       'n',
-      '<space>ds',
+      '<leader>ds',
       vim.lsp.buf.signature_help,
       { buffer = ev.buf, desc = 'Signature help' }
     )
     vim.keymap.set(
       'n',
-      '<space>D',
+      '<leader>D',
       vim.lsp.buf.type_definition,
       { buffer = ev.buf, desc = 'Type [D]efinition' }
     )
     vim.keymap.set(
       'n',
-      '<space>rn',
+      '<leader>rn',
       vim.lsp.buf.rename,
       { buffer = ev.buf, desc = '[R]en[a]me' }
     )
     vim.keymap.set(
       { 'n', 'v' },
-      '<space>ca',
+      '<leader>ca',
       vim.lsp.buf.code_action,
       { desc = '[C]ode [A]ction' }
     )
     vim.keymap.set(
       'n',
       'gr',
-      vim.lsp.buf.references,
+      builtin.lsp_references,
       { buffer = ev.buf, desc = '[G]oto [R]eference' }
     )
-    vim.keymap.set('n', '<space>f', function()
+    vim.keymap.set('n', '<leader>f', function()
       vim.lsp.buf.format({ async = true })
     end, { buffer = ev.buf, desc = '[F]ormat' })
   end,

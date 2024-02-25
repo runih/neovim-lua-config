@@ -22,6 +22,9 @@ end
 keymap.set('t', '<C-W><C-N>', '<C-\\><C-N>', { remap = true }) -- Map <ctrl w>+<ctrl n> to exit terminal mode
 keymap.set('i', 'jk', '<ESC>')
 keymap.set('n', '<leader>nh', ':nohl<CR>')
+-- I don't know what this does!
+-- keymap.set('n', 'j', [[v:count?'j':'gj']], { noremap = true, expr = true })
+-- keymap.set('n', 'k', [[v:count?'k':'gk']], { noremap = true, expr = true })
 
 -- mine preferences
 keymap.set('n', '<leader>cd', '<cmd>lcd %:h<CR>')
@@ -29,7 +32,7 @@ keymap.set(
   'n',
   '<leader>so',
   myfunctions.load_current_luafile,
-  { desc = '[Lo]ading current lua file' }
+  { desc = 'Loading current lua file' }
 )
 keymap.set(
   'n',
