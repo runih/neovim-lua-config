@@ -177,12 +177,6 @@ return {
     if not lspconfig_ok then
       return
     end
-    local mason_tool_installer_loaded, mason_tool_installer =
-      pcall(require, 'mason-tool-installer')
-    if not mason_tool_installer_loaded then
-      print('Mason Tool Installer not loaded')
-      return
-    end
     mason_lsponfig.setup({})
     mason_lsponfig.setup_handlers({
       function(server_name)
@@ -190,6 +184,5 @@ return {
         lspconfig[server_name].setup(server_config)
       end,
     })
-    mason_tool_installer.setup({})
   end,
 }
