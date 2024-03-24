@@ -5,7 +5,6 @@ return {
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
     'kdheepak/lazygit.nvim',
-    'tanvirtin/vgit.nvim',
   },
 
   config = function()
@@ -22,12 +21,5 @@ return {
     end
 
     neogit.setup({})
-
-    local vgit_ok, vgit = pcall(require, 'vgit')
-    if not vgit_ok then
-      return
-    end
-
-    vgit.setup({})
   end,
 }
