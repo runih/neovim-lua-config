@@ -238,6 +238,12 @@ keymap.set('n', '<leader>L', '<cmd>Lazy<CR>', { desc = '[L]azy' })
 -- LazyGit
 keymap.set('n', '<leader>gg', '<cmd>LazyGit<CR>', { desc = 'LazyGit' })
 keymap.set('n', '<leader>gn', '<cmd>Neogit<CR>', { desc = 'NeoGit' })
+keymap.set(
+  'n',
+  '<leader>gb',
+  '<cmd>ToggleBlame virtual<CR>',
+  { desc = 'Git Blame' }
+)
 
 -- debugging
 local dap_loaded, dap = pcall(require, 'dap')

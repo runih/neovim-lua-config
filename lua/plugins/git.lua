@@ -5,6 +5,7 @@ return {
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
     'kdheepak/lazygit.nvim',
+    'FabijanZulj/blame.nvim',
   },
 
   config = function()
