@@ -16,21 +16,18 @@ return {
 
     gitsigns.setup()
 
-    if not vim.fn.has('gui_vimr') then
-      -- Seems like neogit doesn't works with VimR
-      local neogit_ok, neogit = pcall(require, 'neogit')
-      if not neogit_ok then
-        return
-      end
-
-      neogit.setup({})
+    local neogit_ok, neogit = pcall(require, 'neogit')
+    if not neogit_ok then
+      return
     end
+
+    neogit.setup({})
 
     local vgit_ok, vgit = pcall(require, 'vgit')
     if not vgit_ok then
       return
     end
 
-    vgit.setup()
+    vgit.setup({})
   end,
 }
