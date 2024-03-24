@@ -6,7 +6,9 @@ return {
     'tpope/vim-rhubarb',
     'kdheepak/lazygit.nvim',
     'FabijanZulj/blame.nvim',
+    'f-person/git-blame.nvim',
   },
+  event = 'VeryLazy',
 
   config = function()
     local gitsigns_ok, gitsigns = pcall(require, 'gitsigns')
