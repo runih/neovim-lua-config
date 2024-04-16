@@ -1,13 +1,14 @@
 return {
   -- auto closing
   'windwp/nvim-autopairs',
+  event = { 'InsertEnter' },
   dependencies = {
-    'windwp/nvim-ts-autotag',
+    'hrsh7th/nvim-cmp',
   },
 
   config = function()
-    local autopairs_ok, autopairs = pcall(require, 'nvim-autopairs')
-    if not autopairs_ok then
+    local autopairs_loaded, autopairs = pcall(require, 'nvim-autopairs')
+    if not autopairs_loaded then
       return
     end
 
@@ -21,15 +22,15 @@ return {
     })
 
     -- import nvim-autopairs completion functionality safely
-    local cmp_autopairs_ok, cmp_autopairs =
+    local cmp_autopairs_loaded, cmp_autopairs =
       pcall(require, 'nvim-autopairs.completion.cmp')
-    if not cmp_autopairs_ok then
+    if not cmp_autopairs_loaded then
       return
     end
 
     -- import nvim-cmp plugin safely (completions plugin)
-    local cmp_ok, cmp = pcall(require, 'cmp')
-    if not cmp_ok then
+    local cmp_loaded, cmp = pcall(require, 'cmp')
+    if not cmp_loaded then
       return
     end
 
