@@ -1,8 +1,6 @@
 return {
   'goolord/alpha-nvim',
-  dependencies = {
-    'kyazdani42/nvim-web-devicons',
-  },
+  event = 'VimEnter',
   config = function()
     local ok, alpha = pcall(require, 'alpha')
     if not ok then
@@ -15,5 +13,8 @@ return {
     end
 
     alpha.setup(theme.config)
+
+    -- Disable folding on alpha buffer
+    vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
   end,
 }
