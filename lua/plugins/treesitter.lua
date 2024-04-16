@@ -1,20 +1,19 @@
 return {
   -- treesitter
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = function()
-      pcall(require('nvim-treesitter.install').update({ with_sync = true }))
-    end,
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      'neovim/tree-sitter-vimdoc',
-    },
+  'nvim-treesitter/nvim-treesitter',
+  event = { 'BufReadPre', 'BufNewFile' },
+  build = ':TSUpdate',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    'neovim/tree-sitter-vimdoc',
+    'windwp/nvim-ts-autotag',
+    'nvim-treesitter/playground',
   },
-  'nvim-treesitter/playground',
 
   config = function()
-    local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
-    if not ok then
+    local treesitter_loaded, treesitter =
+      pcall(require, 'nvim-treesitter.configs')
+    if not treesitter_loaded then
       return
     end
 
@@ -29,22 +28,13 @@ return {
       autotag = { enable = true },
       ensure_installed = {},
       auto_install = true,
-      playground = {
+      incremental_selection = {
         enable = true,
-        disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = false, -- Whether the query persists across vim sessions
-        keybindings = {
-          toggle_query_editor = 'o',
-          toggle_hl_groups = 'i',
-          toggle_injected_languages = 't',
-          toggle_anonymous_nodes = 'a',
-          toggle_language_display = 'I',
-          focus_language = 'f',
-          unfocus_language = 'F',
-          update = 'R',
-          goto_node = '<cr>',
-          show_help = '?',
+        keymaps = {
+          init_selection = '<C-RETURN>',
+          node_incremental = '<C-RETURN>',
+          scope_inccremental = false,
+          node_decremental = '<bs>',
         },
       },
     })
