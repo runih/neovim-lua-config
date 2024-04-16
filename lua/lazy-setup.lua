@@ -24,6 +24,10 @@ local lazy_setup = lazy.setup('plugins', {
     path = '~/Projects/neovim-plugins',
     fallback = true,
   },
+  checker = {
+    enable = true,
+    notify = false,
+  },
 })
 
 local config_file = io.open(vim.fn.stdpath('config') .. '/lua/local/setup.lua')
