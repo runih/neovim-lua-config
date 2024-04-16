@@ -1,15 +1,10 @@
 return {
-  -- fuzzy finding
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-    cond = vim.fn.executable('make') == 1,
-  },
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-fzf-native.nvim',
       'LukasPietzschmann/telescope-tabs',
       'nvim-telescope/telescope-ui-select.nvim',
     },
@@ -32,6 +27,7 @@ return {
 
       telescope.setup({
         defaults = {
+          path_display = { 'smart' },
           file_ignore_patterns = {
             '.git/',
             'node_modules/',
@@ -65,6 +61,7 @@ return {
         },
       })
       telescope.load_extension('ui-select')
+      telescope.load_extension('fzf')
     end,
   },
 }
