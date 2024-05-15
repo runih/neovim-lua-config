@@ -241,7 +241,7 @@ keymap.set('n', '<leader>gn', '<cmd>Neogit<CR>', { desc = 'NeoGit' })
 keymap.set(
   'n',
   '<leader>gb',
-  '<cmd>ToggleBlame virtual<CR>',
+  '<cmd>BlameToggle virtual<CR>',
   { desc = 'Git Blame' }
 )
 

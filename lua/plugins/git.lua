@@ -11,18 +11,25 @@ return {
   event = 'VeryLazy',
 
   config = function()
-    local gitsigns_ok, gitsigns = pcall(require, 'gitsigns')
-    if not gitsigns_ok then
+    local gitsigns_loaded, gitsigns = pcall(require, 'gitsigns')
+    if not gitsigns_loaded then
       return
     end
 
     gitsigns.setup()
 
-    local neogit_ok, neogit = pcall(require, 'neogit')
-    if not neogit_ok then
+    local neogit_loaded, neogit = pcall(require, 'neogit')
+    if not neogit_loaded then
       return
     end
 
     neogit.setup({})
+
+    local blame_loaded, blame = pcall(require, 'blame')
+    if not blame_loaded then
+      return
+    end
+
+    blame.setup()
   end,
 }
