@@ -45,15 +45,23 @@ return {
         theme = lualine_nightfly,
       },
       sections = {
+        lualine_c = {
+          'filename',
+        },
         lualine_x = {
           {
             lazy_status.updates,
             cond = lazy_status.has_updates,
             color = { fg = '#FF9E64' },
           },
-          { 'encoding' },
-          { 'fileformat' },
-          { 'filetype' },
+          'filesize',
+          'encoding',
+          'fileformat',
+          'filetype',
+        },
+        lualine_z = {
+          'selectioncount',
+          'location',
         },
       },
     })
