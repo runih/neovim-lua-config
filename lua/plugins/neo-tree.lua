@@ -1,12 +1,26 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',
-  keys = {
-    { '<leader>e', '<cmd>NeoTreeFloat<CR>', desc = 'Toggle floating NeoTree' },
-  },
   dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
+  },
+  keys = {
+    {
+      '<leader>ee',
+      '<cmd>Neotree toggle left<CR>',
+      desc = 'Toggle left NeoTree',
+    },
+    {
+      '<leader>ef',
+      '<cmd>Neotree toggle float<CR>',
+      desc = 'Toggle float NeoTree',
+    },
+    {
+      '<leader>er',
+      '<cmd>Neotree reveal<CR>',
+      desc = 'Reveal NeoTree',
+    },
   },
   config = function()
     -- If you want icons for diagnostic errors, you'll need to define them somewhere:
@@ -27,8 +41,8 @@ return {
       { text = '', texthl = 'DiagnosticSignHint' }
     )
 
-    local ok, neo_tree = pcall(require, 'neo-tree')
-    if not ok then
+    local now_tree_loaded, neo_tree = pcall(require, 'neo-tree')
+    if not now_tree_loaded then
       return
     end
     neo_tree.setup({
