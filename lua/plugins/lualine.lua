@@ -41,7 +41,7 @@ return {
     }
 
     local function clock()
-      if vim.g.neovide then
+      if vim.g.neovide or vim.fn.has('gui_vimr') then
         return { 'datetime', style = '%H:%M' }
       end
     end
