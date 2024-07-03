@@ -13,30 +13,29 @@ return {
   config = function()
     local treesitter_loaded, treesitter =
       pcall(require, 'nvim-treesitter.configs')
-    if not treesitter_loaded then
-      return
-    end
 
-    treesitter.setup({
-      modules = {},
-      sync_install = true,
-      ignore_install = {},
-      highlight = {
-        enable = true,
-      },
-      indent = { enable = true },
-      autotag = { enable = true },
-      ensure_installed = {},
-      auto_install = true,
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<C-RETURN>',
-          node_incremental = '<C-RETURN>',
-          scope_inccremental = false,
-          node_decremental = '<bs>',
+    if treesitter_loaded then
+      treesitter.setup({
+        modules = {},
+        sync_install = true,
+        ignore_install = {},
+        highlight = {
+          enable = true,
         },
-      },
-    })
+        indent = { enable = true },
+        autotag = { enable = true },
+        ensure_installed = {},
+        auto_install = true,
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = '<C-s>',
+            node_incremental = '<C-s>',
+            scope_inccremental = false,
+            node_decremental = '<bs>',
+          },
+        },
+      })
+    end
   end,
 }
