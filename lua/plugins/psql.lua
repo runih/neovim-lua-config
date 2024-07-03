@@ -3,21 +3,19 @@ return {
   dev = true,
   branch = 'development',
   config = function()
-    local ok, psql = pcall(require, 'psql')
-    if not ok then
-      return
+    local psql_loaded, psql = pcall(require, 'psql')
+    if psql_loaded then
+      psql.setup({})
     end
-    psql.setup({})
   end,
   dependencies = {
     'runih/cmd.nvim',
     dev = true,
     config = function()
-      local ok, cmd = pcall(require, 'cmd')
-      if not ok then
-        return
+      local cmd_loaded, cmd = pcall(require, 'cmd')
+      if cmd_loaded then
+        cmd.setup({})
       end
-      cmd.setup({})
     end,
   },
 }

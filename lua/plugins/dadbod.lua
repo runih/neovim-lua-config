@@ -4,11 +4,9 @@ return {
   'kristijanhusak/vim-dadbod-ui',
   'kristijanhusak/vim-dadbod-completion',
   config = function()
-    local ok, dadbob = pcall(require, 'config.dadbod')
-    if not ok then
-      return
+    local dadbob_loaded, dadbob = pcall(require, 'config.dadbod')
+    if dadbob_loaded then
+      dadbob.setup()
     end
-
-    dadbob.setup()
   end,
 }

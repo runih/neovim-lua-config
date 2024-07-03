@@ -1,5 +1,9 @@
 return {
+  -- Themes
   'ribru17/bamboo.nvim',
+  'bluz71/vim-nightfly-guicolors',
+  'EdenEast/nightfox.nvim',
+  'rafi/awesome-vim-colorschemes',
   'ChristianChiarulli/nvcode-color-schemes.vim',
   'embark-theme/vim',
   'savq/melange-nvim',

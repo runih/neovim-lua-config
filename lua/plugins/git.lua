@@ -12,24 +12,18 @@ return {
 
   config = function()
     local gitsigns_loaded, gitsigns = pcall(require, 'gitsigns')
-    if not gitsigns_loaded then
-      return
+    if gitsigns_loaded then
+      gitsigns.setup()
     end
-
-    gitsigns.setup()
 
     local neogit_loaded, neogit = pcall(require, 'neogit')
-    if not neogit_loaded then
-      return
+    if neogit_loaded then
+      neogit.setup({})
     end
-
-    neogit.setup({})
 
     local blame_loaded, blame = pcall(require, 'blame')
-    if not blame_loaded then
-      return
+    if blame_loaded then
+      blame.setup()
     end
-
-    blame.setup()
   end,
 }

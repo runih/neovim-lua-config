@@ -3,11 +3,9 @@ return {
   'norcalli/nvim-colorizer.lua',
   config = function()
     vim.opt.termguicolors = true
-    local ok, css = pcall(require, 'colorizer')
-    if not ok then
-      return
+    local colorizer_loaded, colorizer = pcall(require, 'colorizer')
+    if colorizer_loaded then
+      colorizer.setup()
     end
-
-    css.setup()
   end,
 }

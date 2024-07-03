@@ -93,9 +93,6 @@ if cmd_loaded then
 end
 -- plugin keymaps
 
--- vim-maximizer
-keymap.set('n', '<leader>sm', '<cmd>MaximizerToggle<CR>')
-
 -- telescope
 local builtin_loaded, builtin = pcall(require, 'telescope.builtin')
 if builtin_loaded then

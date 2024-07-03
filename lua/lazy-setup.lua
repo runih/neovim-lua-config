@@ -14,27 +14,24 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local ok, lazy = pcall(require, 'lazy')
-if not ok then
-  return
+local lazy_loaded, lazy = pcall(require, 'lazy')
+if lazy_loaded then
+  lazy.setup('plugins', {
+    dev = {
+      path = '~/Projects/neovim-plugins',
+      fallback = true,
+    },
+    checker = {
+      enabled = true,
+      notify = false,
+    },
+  })
+
+  local config_file =
+    io.open(vim.fn.stdpath('config') .. '/lua/local/setup.lua')
+
+  if config_file then
+    config_file:close()
+    require('local.setup')
+  end
 end
-
-local lazy_setup = lazy.setup('plugins', {
-  dev = {
-    path = '~/Projects/neovim-plugins',
-    fallback = true,
-  },
-  checker = {
-    enable = true,
-    notify = false,
-  },
-})
-
-local config_file = io.open(vim.fn.stdpath('config') .. '/lua/local/setup.lua')
-
-if config_file then
-  config_file:close()
-  require('local.setup')
-end
-
-return lazy_setup
