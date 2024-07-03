@@ -16,7 +16,7 @@ vim.g.maplocalleader = ' '
 
 local lazy_loaded, lazy = pcall(require, 'lazy')
 if lazy_loaded then
-  lazy.setup('plugins', {
+  lazy.setup({ { import = 'plugins' }, { import = 'plugins.lsp' } }, {
     dev = {
       path = '~/Projects/neovim-plugins',
       fallback = true,
