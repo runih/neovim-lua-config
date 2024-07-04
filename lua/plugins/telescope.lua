@@ -55,7 +55,8 @@ return {
 
         -- Extensions
         telescope.load_extension('ui-select')
-        telescope.load_extension('fzf')
+        -- BUG: fzf doesn't seem to work on all environments
+        -- telescope.load_extension('fzf')
 
         -- Keymappings
         local keymap = vim.keymap
@@ -185,7 +186,7 @@ return {
           )
           keymap.set(
             'n',
-            '<leader>ft',
+            '<leader>td',
             '<cmd>TodoTelescope<cr>',
             { desc = 'Find ToDos' }
           )
