@@ -18,7 +18,6 @@ return {
     local dapui_loaded, dapui = pcall(require, 'dapui')
 
     if dap_loaded and dapui_loaded then
-      print('Setup DAP')
       dap.adapters.python = {
         type = 'executable',
         command = MASON_BIN_PATH .. '/debugpy-adapter',
