@@ -139,7 +139,6 @@ keymap.set('n', '<leader>M', '<cmd>Mason<CR>', { desc = '[M]ason' })
 keymap.set('n', '<leader>L', '<cmd>Lazy<CR>', { desc = '[L]azy' })
 
 -- LazyGit
-keymap.set('n', '<leader>gg', '<cmd>LazyGit<CR>', { desc = 'LazyGit' })
 keymap.set('n', '<leader>gn', '<cmd>Neogit<CR>', { desc = 'NeoGit' })
 keymap.set(
   'n',
