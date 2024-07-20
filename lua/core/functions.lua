@@ -122,14 +122,6 @@ local functions = {
     })
   end,
 
-  breakpoint_with_condition = function()
-    dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
-  end,
-
-  breakpoint_based_on_log_point_message = function()
-    dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
-  end,
-
   open_neotree = function()
     vim.api.nvim_set_current_dir(vim.fn.expand('%:h'))
     local dir = vim.fn.expand('%:h')

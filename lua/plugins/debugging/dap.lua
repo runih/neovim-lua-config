@@ -4,6 +4,76 @@ return {
     'rcarriga/nvim-dap-ui',
     'nvim-telescope/telescope-dap.nvim',
   },
+  keys = {
+    {
+      '<F2>',
+      mode = { 'n' },
+      function()
+        require('dap').continue()
+      end,
+      desc = '[F2] Debug continue',
+    },
+    {
+      '<F3>',
+      mode = { 'n' },
+      function()
+        require('dap').step_into()
+      end,
+      desc = '[F3] Debug Step Into',
+    },
+    {
+      '<F4>',
+      mode = { 'n' },
+      function()
+        require('dap').step_over()
+      end,
+      desc = '[F4] Debug Stop Over',
+    },
+    {
+      '<F5>',
+      mode = { 'n' },
+      function()
+        require('dap').step_out()
+      end,
+      desc = '[F5] Debug Stop Out',
+    },
+    {
+      '<leader>b',
+      mode = { 'n' },
+      function()
+        require('dap').toggle_breakpoint()
+      end,
+      desc = 'Toggle [b]reakpoint',
+    },
+    {
+      '<leader>B',
+      mode = { 'n' },
+      function()
+        require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
+      end,
+      desc = 'Toggle [B]reakpoint with condition',
+    },
+    {
+      '<leader>lp',
+      mode = { 'n' },
+      function()
+        require('dap').set_breakpoint(
+          nil,
+          nil,
+          vim.fn.input('Log point message: ')
+        )
+      end,
+      desc = 'Toggle breakpoint based on [l]og [p]oint message',
+    },
+    {
+      '<leader>dr',
+      mode = { 'n' },
+      function()
+        require('dap').repl.open()
+      end,
+      desc = '[d]ebug [r]epl open',
+    },
+  },
   config = function()
     -- Make sure the the debuggers are installed
     -- go: 'go install github.com/go-delve/delve/cmd/dlv@latest'

@@ -147,37 +147,4 @@ keymap.set(
   { desc = 'Git Blame' }
 )
 
--- debugging
-local dap_loaded, dap = pcall(require, 'dap')
-if dap_loaded then
-  keymap.set('n', '<F2>', dap.continue, { desc = '[F2] Debug continue' })
-  keymap.set('n', '<F3>', dap.step_into, { desc = '[F3] Debug Step Into' })
-  keymap.set('n', '<F4>', dap.step_over, { desc = '[F4] Debug Stop Over' })
-  keymap.set('n', '<F5>', dap.step_out, { desc = '[F5] Debug Stop Out' })
-  keymap.set(
-    'n',
-    '<leader>b',
-    dap.toggle_breakpoint,
-    { desc = 'Toggle [b]reakpoint' }
-  )
-  keymap.set(
-    'n',
-    '<leader>B',
-    myfunctions.breakpoint_with_condition,
-    { desc = 'Toggle [B]reakpoint with condition' }
-  )
-  keymap.set(
-    'n',
-    '<leader>lp',
-    myfunctions.breakpoint_based_on_log_point_message,
-    { desc = 'Toggle breakpoint based on [l]og [p]oint message' }
-  )
-  keymap.set('n', '<leader>dr', dap.repl.open, { desc = '[d]ebug [r]epl open' })
-  local dapui_loaded, dapui = pcall(require, 'dapui')
-  if dapui_loaded then
-    keymap.set('n', '<leader>do', dapui.open, { desc = '[d]ebug UI [o]pen' })
-    keymap.set('n', '<leader>dc', dapui.close, { desc = '[d]ebug UI [c]close' })
-  end
-end
-
 keymap.set('n', '<c-e>', myfunctions.open_neotree, { desc = 'Open N[E]oTree' })
