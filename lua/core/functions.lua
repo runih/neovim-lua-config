@@ -8,16 +8,6 @@ if not utils_loaded then
   return
 end
 
-local dap_loaded, dap = pcall(require, 'dap')
-if not dap_loaded then
-  return
-end
-
-local neotree_loaded, neotree = pcall(require, 'neo-tree.command')
-if not neotree_loaded then
-  return
-end
-
 local function get_file_name(file)
   return file:match('^.+/(.+)$')
 end
@@ -123,6 +113,11 @@ local functions = {
   end,
 
   open_neotree = function()
+    local neotree_loaded, neotree = pcall(require, 'neo-tree.command')
+    if not neotree_loaded then
+      return
+    end
+
     vim.api.nvim_set_current_dir(vim.fn.expand('%:h'))
     local dir = vim.fn.expand('%:h')
     if git_folder() then

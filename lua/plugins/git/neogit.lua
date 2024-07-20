@@ -9,7 +9,20 @@ return {
     'f-person/git-blame.nvim',
   },
   event = 'VeryLazy',
-
+  keys = {
+    {
+      '<leader>gn',
+      mode = { 'n' },
+      '<cmd>Neogit<CR>',
+      desc = 'NeoGit',
+    },
+    {
+      '<leader>gb',
+      mode = { 'n' },
+      '<cmd>BlameToggle virtual<CR>',
+      desc = 'Git Blame',
+    },
+  },
   config = function()
     local gitsigns_loaded, gitsigns = pcall(require, 'gitsigns')
     local neogit_loaded, neogit = pcall(require, 'neogit')

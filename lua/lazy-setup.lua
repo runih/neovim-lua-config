@@ -40,3 +40,6 @@ if lazy_loaded then
     require('local.setup')
   end
 end
+
+-- Keymappings
+vim.keymap.set('n', '<leader>L', '<cmd>Lazy<CR>', { desc = '[L]azy' })

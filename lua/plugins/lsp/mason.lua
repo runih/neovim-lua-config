@@ -16,5 +16,7 @@ return {
         ensure_installed = {},
       })
     end
+    -- Keymapping for Mason
+    vim.keymap.set('n', '<leader>M', '<cmd>Mason<CR>', { desc = '[M]ason' })
   end,
 }

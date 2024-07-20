@@ -1,6 +1,14 @@
 return {
   'goolord/alpha-nvim',
   event = 'VimEnter',
+  keys = {
+    {
+      '<leader>a',
+      mode = { 'n' },
+      '<cmd>Alpha<CR>',
+      desc = '[A]lpha',
+    },
+  },
   config = function()
     local alpha_loaded, alpha = pcall(require, 'alpha')
     local theme_loaded, theme = pcall(require, 'alpha.themes.startify')

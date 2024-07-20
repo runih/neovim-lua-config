@@ -7,16 +7,6 @@ end
 
 local keymap = vim.keymap -- for conciseness
 
-local colorscheme_loaded, colorscheme = pcall(require, 'colorscheme-picker')
-if colorscheme_loaded then
-  keymap.set(
-    'n',
-    '<leader>bt',
-    colorscheme.toggle_background,
-    { desc = '[B]ackground [T]toggle' }
-  )
-end
-
 -- general keymaps
 
 keymap.set('t', '<C-W><C-N>', '<C-\\><C-N>', { remap = true }) -- Map <ctrl w>+<ctrl n> to exit terminal mode
@@ -128,23 +118,3 @@ keymap.set(
   '<Plug>PlenaryTestFile',
   { desc = 'Plenary[T]estFile' }
 )
-
--- Alpha
-keymap.set('n', '<leader>a', '<cmd>Alpha<CR>', { desc = '[A]lpha' })
-
--- Mason
-keymap.set('n', '<leader>M', '<cmd>Mason<CR>', { desc = '[M]ason' })
-
--- Lazy
-keymap.set('n', '<leader>L', '<cmd>Lazy<CR>', { desc = '[L]azy' })
-
--- LazyGit
-keymap.set('n', '<leader>gn', '<cmd>Neogit<CR>', { desc = 'NeoGit' })
-keymap.set(
-  'n',
-  '<leader>gb',
-  '<cmd>BlameToggle virtual<CR>',
-  { desc = 'Git Blame' }
-)
-
-keymap.set('n', '<c-e>', myfunctions.open_neotree, { desc = 'Open N[E]oTree' })

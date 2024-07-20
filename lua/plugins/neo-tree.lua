@@ -7,17 +7,31 @@ return {
   },
   keys = {
     {
+      '<c-e>',
+      mode = { 'n' },
+      function()
+        local myfunctions_loaded, myfunctions = pcall(require, 'core.functions')
+        if myfunctions_loaded then
+          myfunctions.open_neotree()
+        end
+      end,
+      desc = 'Open N[E]oTree',
+    },
+    {
       '<leader>ee',
+      mode = { 'n' },
       '<cmd>Neotree toggle left<CR>',
       desc = 'Toggle left NeoTree',
     },
     {
       '<leader>ef',
+      mode = { 'n' },
       '<cmd>Neotree toggle float<CR>',
       desc = 'Toggle float NeoTree',
     },
     {
       '<leader>er',
+      mode = { 'n' },
       '<cmd>Neotree reveal<CR>',
       desc = 'Reveal NeoTree',
     },
