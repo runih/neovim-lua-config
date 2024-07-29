@@ -8,3 +8,9 @@ if vim.g.neovide then
 elseif vim.g.gui_vimr then
   require('core.vimr')
 end
+
+-- Local configuration
+local local_config_loaded, local_config = pcall(require, 'local')
+if local_config_loaded then
+  local_config.setup()
+end
