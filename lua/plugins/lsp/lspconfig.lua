@@ -115,6 +115,12 @@ return {
             },
           })
         end,
+        ['tsserver'] = function()
+          lspconfig['tsserver'].setup({})
+        end,
+        ['volar'] = function()
+          lspconfig['volar'].setup({})
+        end,
       })
     end
   end,
