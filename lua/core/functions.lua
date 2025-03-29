@@ -148,6 +148,19 @@ local functions = {
       builtin.find_files(opts)
     end
   end,
+
+  git_worktrees = function()
+    local loaded, telescope = pcall(require, 'telescope')
+    if loaded then
+      telescope.extensions.git_worktree.git_worktrees()
+    end
+  end,
+  create_git_worktree = function()
+    local loaded, telescope = pcall(require, 'telescope')
+    if loaded then
+      telescope.extensions.git_worktree.create_git_worktree()
+    end
+  end,
 }
 
 return functions

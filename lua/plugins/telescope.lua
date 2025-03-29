@@ -8,6 +8,7 @@ return {
       'LukasPietzschmann/telescope-tabs',
       'nvim-telescope/telescope-ui-select.nvim',
       'folke/todo-comments.nvim',
+      'ThePrimeagen/git-worktree.nvim',
     },
     config = function()
       local telescope_loaded, telescope = pcall(require, 'telescope')
@@ -53,15 +54,31 @@ return {
           },
         })
 
+        local keymap = vim.keymap
+        local myfunctions_loaded, myfunctions = pcall(require, 'core.functions')
+        -- Extensions
+        telescope.load_extension('git_worktree')
+        -- Keymappings
+        keymap.set(
+          'n',
+          '<leader>Gt',
+          myfunctions.git_worktrees,
+          { desc = 'List git worktree' }
+        )
+        keymap.set(
+          'n',
+          '<leader>Gw',
+          myfunctions.create_git_worktree,
+          { desc = 'Create git worktree' }
+        )
         -- Extensions
         telescope.load_extension('ui-select')
+
         -- BUG: fzf doesn't seem to work on all environments
         -- telescope.load_extension('fzf')
 
         -- Keymappings
-        local keymap = vim.keymap
         local builtin_loaded, builtin = pcall(require, 'telescope.builtin')
-        local myfunctions_loaded, myfunctions = pcall(require, 'core.functions')
         if myfunctions_loaded and builtin_loaded then
           keymap.set(
             'n',
