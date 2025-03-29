@@ -61,13 +61,13 @@ return {
         -- Keymappings
         keymap.set(
           'n',
-          '<leader>Gt',
+          '<leader>gl',
           myfunctions.git_worktrees,
           { desc = 'List git worktree' }
         )
         keymap.set(
           'n',
-          '<leader>Gw',
+          '<leader>gw',
           myfunctions.create_git_worktree,
           { desc = 'Create git worktree' }
         )
