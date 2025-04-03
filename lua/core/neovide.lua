@@ -3,7 +3,7 @@ local opt = vim.opt -- for conciseness
 -- Neovide settings
 opt.guifont = { 'Hack_Nerd_Font_Mono:h17' }
 -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-vim.g.neovide_transparency = 0.8
+vim.g.neovide_opacity = 0.8
 vim.g.transparency = 0.8
 
 -- Floating Blur Amount
