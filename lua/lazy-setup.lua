@@ -18,6 +18,7 @@ local lazy_loaded, lazy = pcall(require, 'lazy')
 if lazy_loaded then
   lazy.setup({
     { import = 'plugins' },
+    { import = 'plugins.ai' },
     { import = 'plugins.git' },
     { import = 'plugins.lsp' },
     { import = 'plugins.debugging' },
