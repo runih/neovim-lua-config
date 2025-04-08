@@ -9,6 +9,85 @@ return {
     opts = {
       -- See Configuration section for options
     },
-    -- See Commands section for default commands if you want to lazy load on them
+    keys = {
+      {
+        "<C-'>",
+        '<cmd>CopilotChatInline<CR>',
+        mode = 'i',
+        desc = 'Trigger CopilotChat inline suggestions',
+      },
+      {
+        '<C-Space>',
+        '<cmd>CopilotChatAccept<CR>',
+        mode = 'i',
+        desc = 'Accept CopilotChat suggestion',
+      },
+      {
+        '<leader>zc',
+        '<cmd>CopilotChat<CR>',
+        mode = 'n',
+        desc = 'Chat with Copilot',
+      },
+      {
+        '<leader>zr',
+        '<cmd>CopilotChatReview<CR>',
+        mode = 'v',
+        desc = 'Review Code',
+      },
+      {
+        '<leader>ze',
+        '<cmd>CopilotChatExplain<CR>',
+        mode = 'v',
+        desc = 'Explain selected text with CopilotChat',
+      },
+      {
+        '<leader>zf',
+        '<cmd>CopilotFix<CR>',
+        mode = 'v',
+        desc = 'Fix Code Issues',
+      },
+      {
+        '<leader>zo',
+        '<cmd>CopilotChatOptimize<CR>',
+        mode = 'v',
+        desc = 'Optimize Code',
+      },
+      {
+        '<leader>zd',
+        '<cmd>CopilotChatDocs<CR>',
+        mode = 'v',
+        desc = 'Generate Documentation',
+      },
+      {
+        '<leader>zt',
+        '<cmd>CopilotChatTests<CR>',
+        mode = 'v',
+        desc = 'Generate Tests',
+      },
+      {
+        '<leader>zq',
+        '<cmd>CopilotChatClose<CR>',
+        mode = 'n',
+        desc = 'Close CopilotChat panel',
+      },
+      {
+        '<leader>zg',
+        '<cmd>CopilotChatGenerate<CR>',
+        mode = 'v',
+        desc = 'Generate code from selected text',
+      },
+      {
+        '<leader>zm',
+        '<cmd>CopilotChatCommit<CR>',
+        mode = 'n',
+        desc = 'Generate commit message',
+      },
+      {
+        '<leader>zs',
+        '<cmd>CopilotChatCommit<CR>',
+        mode = 'v',
+        desc = 'Generate commit for selected text',
+      },
+    },
   },
 }
