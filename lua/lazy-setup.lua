@@ -43,13 +43,19 @@ if lazy_loaded then
   })
 
   -- Check for the existence of a local setup file
-  local config_file_path = vim.fn.stdpath('config') .. '/lua/local/setup.lua'
-  local config_file, err = io.open(config_file_path, 'r')
-  if config_file then
-    config_file:close() -- Close the file handle
-    require('local.setup') -- Load the local setup configuration
-  else
-    vim.notify('Failed to open local setup file: ' .. err, vim.log.levels.WARN)
+  local local_dir_path = vim.fn.stdpath('config') .. '/lua/local'
+  if vim.fn.isdirectory(local_dir_path) == 1 then
+    local config_file_path = vim.fn.stdpath('config') .. '/lua/local/setup.lua'
+    local config_file, err = io.open(config_file_path, 'r')
+    if config_file then
+      config_file:close() -- Close the file handle
+      require('local.setup') -- Load the local setup configuration
+    else
+      vim.notify(
+        'Failed to open local setup file: ' .. err,
+        vim.log.levels.WARN
+      )
+    end
   end
 end
 
