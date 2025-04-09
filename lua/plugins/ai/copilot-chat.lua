@@ -7,7 +7,8 @@ return {
     },
     build = 'make tiktoken', -- Only on MacOS or Linux
     opts = {
-      -- See Configuration section for options
+      -- Add necessary configuration options here
+      -- Example: max_tokens = 1000, temperature = 0.7
     },
     keys = {
       {
@@ -42,7 +43,7 @@ return {
       },
       {
         '<leader>zf',
-        '<cmd>CopilotFix<CR>',
+        '<cmd>CopilotChatFix<CR>',
         mode = 'v',
         desc = 'Fix Code Issues',
       },
