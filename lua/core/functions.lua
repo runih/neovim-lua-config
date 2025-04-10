@@ -105,6 +105,7 @@ local functions = {
         prompt_prefix = ' ⚠   > ',
         winblend = 10,
         sorting_strategy = 'ascending',
+        follow = true,
         layout_config = {
           prompt_position = 'top',
           width = 0.6,
