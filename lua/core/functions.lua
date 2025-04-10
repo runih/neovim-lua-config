@@ -97,19 +97,34 @@ local functions = {
   end,
 
   nvim_config = function()
-    -- List nvim config files
-    builtin.git_files({
-      cwd = '~/.config/nvim',
-      prompt_title = 'NeoVim config',
-      prompt_prefix = '  > ',
-      winblend = 10,
-      sorting_strategy = 'ascending',
-      layout_config = {
-        prompt_position = 'top',
-        width = 0.6,
-        height = 0.5,
-      },
-    })
+    local config_path = vim.fn.expand('~/.config/nvim')
+    if vim.fn.isdirectory(config_path .. '/.git') == 0 then
+      builtin.find_files({
+        cwd = vim.fn.expand('~/.config/nvim'),
+        prompt_title = 'NeoVim config (not in git)',
+        prompt_prefix = ' ⚠   > ',
+        winblend = 10,
+        sorting_strategy = 'ascending',
+        layout_config = {
+          prompt_position = 'top',
+          width = 0.6,
+          height = 0.5,
+        },
+      })
+    else
+      builtin.git_files({
+        cwd = vim.fn.expand('~/.config/nvim'),
+        prompt_title = 'NeoVim config',
+        prompt_prefix = '  > ',
+        winblend = 10,
+        sorting_strategy = 'ascending',
+        layout_config = {
+          prompt_position = 'top',
+          width = 0.6,
+          height = 0.5,
+        },
+      })
+    end
   end,
 
   open_neotree = function()
