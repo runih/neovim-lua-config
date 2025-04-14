@@ -45,10 +45,11 @@ vim.g.neovide_cursor_vfx_particle_phase = 1.5
 vim.g.neovide_cursor_vfx_particle_curl = 1.0
 
 local set_font_size_picker = function()
-  local current_font = vim.opt.guifont:get()[1]
+  local guifont = vim.opt.guifont:get()[1]
+  local current_font = guifont:match('([^:]+)')
   vim.ui.input({
     prompt = 'Font Size: ',
-    default = vim.opt.guifont:get()[1]:match('h(%d+)'),
+    default = guifont:match('h(%d+)'),
   }, function(input)
     if input then
       local new_font_size = tonumber(input)
