@@ -1,7 +1,8 @@
 local opt = vim.opt -- for conciseness
 
 -- Neovide settings
-opt.guifont = { 'Hack_Nerd_Font_Mono:h17' }
+opt.guifont = { 'Iosevka_NFM_Light:h15' }
+
 -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
 vim.g.neovide_opacity = 0.8
 vim.g.transparency = 0.8
@@ -42,3 +43,25 @@ vim.g.neovide_cursor_vfx_particle_density = 7.0
 vim.g.neovide_cursor_vfx_particle_speed = 10.0
 vim.g.neovide_cursor_vfx_particle_phase = 1.5
 vim.g.neovide_cursor_vfx_particle_curl = 1.0
+
+local set_font_size_picker = function()
+  local current_font = vim.opt.guifont:get()[1]
+  vim.ui.input({
+    prompt = 'Font Size: ',
+    default = vim.opt.guifont:get()[1]:match('h(%d+)'),
+  }, function(input)
+    if input then
+      local new_font_size = tonumber(input)
+      if new_font_size then
+        vim.g.neovide_scale_factor = new_font_size / 15
+        opt.guifont = { current_font .. ':h' .. new_font_size }
+      else
+        print('Invalid font size')
+      end
+    end
+  end)
+end
+
+vim.keymap.set('n', '<leader>fs', set_font_size_picker, {
+  desc = 'Set font size',
+})
