@@ -1,127 +1,105 @@
 return {
-  'neovim/nvim-lspconfig',
-  event = { 'BufReadPre', 'BufNewFile' },
-  dependencies = {
-    'hrsh7th/cmp-nvim-lsp',
-    { 'antosha417/nvim-lsp-file-operations', config = true },
-    { 'folke/lazydev.nvim', opts = {} },
-  },
-  config = function()
-    -- import lspconfig plugin
-    local lspconfig_loaded, lspconfig = pcall(require, 'lspconfig')
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'saghen/blink.cmp',
+      {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {
+          library = {
+            { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+          },
+        },
+      },
+    },
+    config = function()
+      local blink_loaded, blink = pcall(require, 'blink.cmp')
+      if not blink_loaded then
+        print('blink not loaded')
+        return
+      end
+      local capabilities = blink.get_lsp_capabilities()
 
-    -- import mason_lspconfig plugin
-    local mason_lspconfig_loaded, mason_lspconfig =
-      pcall(require, 'mason-lspconfig')
-
-    -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp_loaded, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-
-    local keymap = vim.keymap -- for conciseness
-
-    if lspconfig_loaded and mason_lspconfig_loaded and cmp_nvim_lsp_loaded then
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-        callback = function(ev)
-          -- Buffer local mappings.
-          -- See `:help vim.lsp.*` for documentation on any of the below functions
-          local opts = { buffer = ev.buf, silent = true }
-
-          -- set keybinds
-          opts.desc = 'Show LSP references'
-          keymap.set('n', 'gR', '<cmd>Telescope lsp_references<CR>', opts) -- show definition, references
-
-          opts.desc = 'Go to declaration'
-          keymap.set('n', 'gD', vim.lsp.buf.declaration, opts) -- go to declaration
-
-          opts.desc = 'Show LSP definitions'
-          keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts) -- show lsp definitions
-
-          opts.desc = 'Show LSP implementations'
-          keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts) -- show lsp implementations
-
-          opts.desc = 'Show LSP type definitions'
-          keymap.set('n', 'gT', '<cmd>Telescope lsp_type_definitions<CR>', opts) -- show lsp type definitions
-
-          opts.desc = 'See available code actions'
-          keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
-          opts.desc = 'Smart rename'
-          keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts) -- smart rename
-
-          opts.desc = 'Show buffer diagnostics'
-          keymap.set(
-            'n',
-            '<leader>D',
-            '<cmd>Telescope diagnostics bufnr=0<CR>',
-            opts
-          ) -- show  diagnostics for file
-
-          opts.desc = 'Show line diagnostics'
-          keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts) -- show diagnostics for line
-
-          opts.desc = 'Go to previous diagnostic'
-          keymap.set('n', '[d', vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
-
-          opts.desc = 'Go to next diagnostic'
-          keymap.set('n', ']d', vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-
-          opts.desc = 'Show documentation for what is under cursor'
-          keymap.set('n', 'K', vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-
-          opts.desc = 'Restart LSP'
-          keymap.set('n', '<leader>rs', ':LspRestart<CR>', opts) -- mapping to restart lsp if necessary
-        end,
-      })
-
-      -- used to enable autocompletion (assign to every lsp server config)
-      local capabilities = cmp_nvim_lsp.default_capabilities()
-
-      -- Change the Diagnostic symbols in the sign column (gutter)
-      -- (not in youtube nvim video)
-      local signs =
-        { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
-      for type, icon in pairs(signs) do
-        local hl = 'DiagnosticSign' .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+      local mason_registry_loaded, mason_registry =
+        pcall(require, 'mason-registry')
+      if not mason_registry_loaded then
+        print('mason_registry not loaded')
+        return
       end
 
-      mason_lspconfig.setup_handlers({
-        -- default handler for installed servers
-        function(server_name)
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-          })
-        end,
-        ['gopls'] = function()
-          lspconfig['gopls'].setup({
-            capabilities = capabilities,
-          })
-        end,
-        ['lua_ls'] = function()
-          -- configure lua server (with special settings)
-          lspconfig['lua_ls'].setup({
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                -- make the language server recognize "vim" global
-                diagnostics = {
-                  globals = { 'vim' },
-                },
-                completion = {
-                  callSnippet = 'Replace',
-                },
+      local loaded, lspconfig = pcall(require, 'lspconfig')
+      if not loaded then
+        return
+      end
+
+      if mason_registry.is_installed('lua-language-server') then
+        lspconfig.lua_ls.setup({ capabilities = capabilities })
+      end
+      if mason_registry.is_installed('bash-language-server') then
+        lspconfig.bashls.setup({ capabilities = capabilities })
+      end
+      if mason_registry.is_installed('nil') then
+        vim.lsp.enable('nil_ls')
+        lspconfig.nil_ls.setup({
+          capabilities = capabilities,
+          settings = {
+            ['nil'] = {
+              format = {
+                enable = true,
               },
             },
-          })
-        end,
-        ['tsserver'] = function()
-          lspconfig['tsserver'].setup({})
-        end,
-        ['volar'] = function()
-          lspconfig['volar'].setup({})
-        end,
-      })
-    end
-  end,
+          },
+        })
+      end
+      if mason_registry.is_installed('yaml-language-server') then
+        lspconfig.yamlls.setup({
+          capabilities = capabilities,
+          settings = {
+            yaml = {
+              schemas = {
+                kubernetes = '/*.yaml',
+              },
+            },
+          },
+        })
+      end
+      if mason_registry.is_installed('python-lsp-server') then
+        lspconfig.pylsp.setup({ capabilities = capabilities })
+      end
+      if mason_registry.is_installed('vue-language-server') then
+        lspconfig.volar.setup({ capabilities = capabilities })
+      end
+      if mason_registry.is_installed('typescript-language-server') then
+        lspconfig.ts_ls.setup({ capabilities = capabilities })
+      end
+      if mason_registry.is_installed('gopls') then
+        lspconfig.gopls.setup({
+          capabilities = capabilities,
+          settings = {
+            gopls = {
+              analyses = {
+                unusedparams = true,
+                shadow = true,
+              },
+              staticcheck = true,
+            },
+          },
+        })
+      end
+      if mason_registry.is_installed('rust-analyzer') then
+        lspconfig.rust_analyzer.setup({
+          capabilities = capabilities,
+          settings = {
+            ['rust-analyzer'] = {
+              checkOnSave = {
+                command = 'clippy',
+              },
+            },
+          },
+        })
+      end
+    end,
+  },
 }
