@@ -15,7 +15,7 @@ return {
     -- Map <C-e> in insert mode to accept Copilot suggestions
     vim.keymap.set(
       'i', -- Mode: Insert
-      '<C-e>', -- Key combination
+      '<C-i>', -- Key combination
       'copilot#Accept("<CR>")', -- Copilot function to accept suggestion
       { expr = true, silent = true, replace_keycodes = false } -- Keymap options
     )
