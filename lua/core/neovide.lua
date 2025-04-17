@@ -63,6 +63,6 @@ local set_font_size_picker = function()
   end)
 end
 
-vim.keymap.set('n', '<leader>fs', set_font_size_picker, {
+vim.keymap.set('n', '<leader>ns', set_font_size_picker, {
   desc = 'Set font size',
 })

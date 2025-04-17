@@ -106,7 +106,7 @@ return {
           )
           keymap.set(
             'n',
-            '<leader>ff',
+            '<leader>fF',
             builtin.find_files,
             { desc = '[S]earch [F]iles' }
           )
