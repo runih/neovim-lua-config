@@ -1,12 +1,10 @@
 return {
-  {
-    'ixru/nvim-markdown',
-    'godlygeek/tabular',
-    'iamcco/markdown-preview.nvim',
-    build = 'cd app && yarn install',
-    config = function()
-      vim.g.mkdp_browser = '/Applications/Vivaldi.app/Contents/MacOS/Vivaldi'
-      vim.g.mkdp_auto_close = 0
-    end,
-  },
+  'MeanderingProgrammer/render-markdown.nvim',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter',
+    'nvim-tree/nvim-web-devicons',
+  }, -- if you prefer nvim-web-devicons
+  ---@module 'render-markdown'
+  ---@type render.md.UserConfig
+  opts = {},
 }
