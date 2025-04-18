@@ -72,6 +72,8 @@ return {
         { name = 'nil', lspname = 'nil_ls' },
         -- Java language server for Java development
         { name = 'jdtls', lspname = 'jdtls' },
+        -- Ansible language server for Ansible development
+        { name = 'ansible-language-server', lspname = 'ansiblels' },
       }
 
       for _, server in ipairs(language_servers) do
