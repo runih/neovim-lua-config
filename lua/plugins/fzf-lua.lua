@@ -38,6 +38,7 @@ return {
     { '<leader>fg', '<cmd>FzfLua git_files<cr>', desc = 'Git Files' },
     { '<leader>fb', '<cmd>FzfLua buffers<cr>', desc = 'Buffers' },
     { '<leader>fB', '<cmd>FzfLua builtin<cr>', desc = 'Builtin' },
+    { '<leader>fk', '<cmd>FzfLua keymaps<cr>', desc = 'Keymapping' },
     { '<leader>fh', '<cmd>FzfLua help_tags<cr>', desc = 'Help Tags' },
     { '<leader>fw', '<cmd>FzfLua grep_cword<cr>', desc = 'Grep Cword' },
     { '<leader>fW', '<cmd>FzfLua grep_cWORD<cr>', desc = 'Grep CWORD' },
