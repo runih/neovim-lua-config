@@ -182,6 +182,7 @@ local functions = {
     local foldmethod = vim.opt_local.foldmethod:get()
     if foldmethod == 'manual' then
       vim.opt_local.foldmethod = 'indent'
+      vim.cmd('normal! zM') -- Collapse all folds
       print('Fold method set to indent')
     else
       vim.opt_local.foldmethod = 'manual'
