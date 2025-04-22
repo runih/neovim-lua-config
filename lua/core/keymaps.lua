@@ -67,6 +67,12 @@ keymap.set(
   myfunctions.project_files,
   { desc = '[P]roject Files' }
 )
+keymap.set(
+  'n',
+  '<leader>tf',
+  myfunctions.toggle_foldmethod,
+  { desc = 'Toggle [F]oldmethod' }
+)
 
 -- Snippet
 keymap.set('i', '<C-Tab>', '<Plug>luasnip-jump-next')

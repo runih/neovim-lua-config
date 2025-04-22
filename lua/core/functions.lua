@@ -177,6 +177,18 @@ local functions = {
       telescope.extensions.git_worktree.create_git_worktree()
     end
   end,
+
+  toggle_foldmethod = function()
+    local foldmethod = vim.opt_local.foldmethod:get()
+    if foldmethod == 'manual' then
+      vim.opt_local.foldmethod = 'indent'
+      print('Fold method set to indent')
+    else
+      vim.opt_local.foldmethod = 'manual'
+      vim.cmd('normal! zR') -- Expand all folds
+      print('Fold method set to manual')
+    end
+  end,
 }
 
 return functions
