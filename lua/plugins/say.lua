@@ -1,5 +1,8 @@
 return {
   'runih/say.nvim',
+  dependencies = {
+    'nvim-telescope/telescope.nvim',
+  },
   dev = true,
   branch = 'main',
   lazy = true,
