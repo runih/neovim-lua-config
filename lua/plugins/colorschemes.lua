@@ -1,14 +1,17 @@
 return {
   -- Themes
-  'ribru17/bamboo.nvim',
+  'bluz71/vim-nightfly-colors',
   'bluz71/vim-nightfly-guicolors',
-  'EdenEast/nightfox.nvim',
-  'rafi/awesome-vim-colorschemes',
   'ChristianChiarulli/nvcode-color-schemes.vim',
+  'EdenEast/nightfox.nvim',
   'embark-theme/vim',
-  'savq/melange-nvim',
-  'sainnhe/edge',
   'glepnir/zephyr-nvim',
+  'kepano/flexoki',
+  'olimorris/onedarkpro.nvim',
+  'olivercederborg/poimandres.nvim',
+  'ribru17/bamboo.nvim',
+  'sainnhe/edge',
+  'savq/melange-nvim',
   {
     'folke/tokyonight.nvim',
     lazy = false,
