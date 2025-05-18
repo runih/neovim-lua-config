@@ -15,9 +15,17 @@ return {
     -- Map <C-e> in insert mode to accept Copilot suggestions
     vim.keymap.set(
       'i', -- Mode: Insert
-      '<C-i>', -- Key combination
+      '<C-e>', -- Key combination
       'copilot#Accept("<CR>")', -- Copilot function to accept suggestion
       { expr = true, silent = true, replace_keycodes = false } -- Keymap options
     )
+
+    -- Make sure the copilot chat window has markdown as the default filetype
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = 'copilot-chat',
+      callback = function()
+        vim.opt_local.filetype = 'markdown'
+      end,
+    })
   end,
 }
