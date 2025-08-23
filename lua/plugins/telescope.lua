@@ -98,24 +98,24 @@ return {
             builtin.buffers,
             { desc = '[ ] Find existing buffers' }
           )
-          keymap.set(
-            'n',
-            '<leader>fo',
-            builtin.oldfiles,
-            { desc = '[F]ind recently [o]ld files' }
-          )
-          keymap.set(
-            'n',
-            '<leader>fF',
-            builtin.find_files,
-            { desc = '[S]earch [F]iles' }
-          )
-          keymap.set(
-            'n',
-            '<leader>ft',
-            builtin.filetypes,
-            { desc = '[S]search [T]ypes' }
-          )
+          --          keymap.set(
+          --            'n',
+          --            '<leader>fo',
+          --            builtin.oldfiles,
+          --            { desc = '[F]ind recently [o]ld files' }
+          --          )
+          -- keymap.set(
+          --   'n',
+          --   '<leader>fF',
+          --   builtin.find_files,
+          --   { desc = '[S]earch [F]iles' }
+          -- )
+          -- keymap.set(
+          --   'n',
+          --   '<leader>ft',
+          --   builtin.filetypes,
+          --   { desc = '[S]search [T]ypes' }
+          -- )
           keymap.set(
             'n',
             '<leader>ht',

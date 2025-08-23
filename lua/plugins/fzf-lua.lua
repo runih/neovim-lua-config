@@ -19,7 +19,7 @@ return {
         delay = 100,
         vertical = 'up:30%',
         horizontal = 'right:50%',
-        layout = 'vertical',
+        layout = 'horizontal',
         border = 'rounded',
       },
     },
@@ -34,19 +34,19 @@ return {
     },
   },
   keys = {
-    { '<leader>fR', '<cmd>FzfLua resume<cr>', desc = 'Resume' },
+    { '<leader>f.', '<cmd>FzfLua resume<cr>', desc = 'Resume' },
     { '<leader>fB', '<cmd>FzfLua builtin<cr>', desc = 'Builtin' },
 
     { '<leader>ff', '<cmd>FzfLua files<cr>', desc = 'Files' },
     { '<leader>fo', '<cmd>FzfLua oldfiles<cr>', desc = 'Oldfiles' },
-    { '<leader>fT', '<cmd>FzfLua filetypes<cr>', desc = 'Filetypes' },
+    { '<leader>ft', '<cmd>FzfLua filetypes<cr>', desc = 'Filetypes' },
     -- Buffer related
     { '<leader>fb', '<cmd>FzfLua buffers<cr>', desc = 'Buffers' },
     { '<leader>fbd', '<cmd>FzfLua buffers delete<cr>', desc = 'Delete Buffer' },
     { '<leader>fbo', '<cmd>FzfLua buffers oldfiles<cr>', desc = 'Old Buffers' },
     { '<leader>fbl', '<cmd>FzfLua blines<cr>', desc = 'Buffer Lines' },
     { '<leader>fbt', '<cmd>FzfLua btags<cr>', desc = 'Buffer Tags' },
-    { '<leader>ft', '<cmd>FzfLua tabs<cr>', desc = 'Tabs' },
+    --{ '<leader>fT', '<cmd>FzfLua tabs<cr>', desc = 'Tabs' },
     -- Search Related
     { '<leader>fw', '<cmd>FzfLua grep_cword<cr>', desc = 'Grep Cword' },
     { '<leader>fW', '<cmd>FzfLua grep_cWORD<cr>', desc = 'Grep CWORD' },
@@ -75,7 +75,7 @@ return {
       desc = 'LSP Document Symbols',
     },
     {
-      '<leader>ftt',
+      '<leader>flt',
       '<cmd>FzfLua lsp_type_definitions<cr>',
       desc = 'LSP Type Definitions',
     },
