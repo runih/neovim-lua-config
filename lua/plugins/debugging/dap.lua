@@ -102,7 +102,7 @@ return {
           args = function()
             local s = vim.fn.input('Enter arguments: ')
             local args = {}
-            for arg in string.gmatch(s, '[a-zA-Z,-]+') do
+            for arg in string.gmatch(s, '%S+') do
               table.insert(args, arg)
             end
             return args
