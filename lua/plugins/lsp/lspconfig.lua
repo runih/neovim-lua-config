@@ -23,12 +23,6 @@ return {
       end
       local capabilities = blink.get_lsp_capabilities() -- Get LSP capabilities from Blink
 
-      -- Attempt to load the LSPConfig plugin
-      local loaded, lspconfig = pcall(require, 'lspconfig')
-      if not loaded then
-        return -- Exit if LSPConfig is not available
-      end
-
       -- Set up the LSP servers
       local mason_lsp_loaded, mason_lspconfig =
         pcall(require, 'mason-lspconfig')
@@ -58,7 +52,6 @@ return {
           if settings[server] then
             config.settings = settings[server].settings -- Apply server-specific settings
           end
-          lspconfig[server].setup(config) -- Set up the server with the configuration
         end
       end
     end,
