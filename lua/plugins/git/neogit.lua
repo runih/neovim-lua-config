@@ -2,7 +2,6 @@ return {
   'NeogitOrg/neogit',
   lazy = true,
   dependencies = {
-    'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
     { 'FabijanZulj/blame.nvim',  opts = {} },
     { 'f-person/git-blame.nvim', opts = {} },
