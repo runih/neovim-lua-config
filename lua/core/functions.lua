@@ -19,7 +19,7 @@ end
 
 local function git_folder()
   local _, ret, _ =
-    utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
+      utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
   return ret == 0
 end
 
@@ -116,7 +116,7 @@ local functions = {
     local dir = vim.fn.expand('%:h')
     if git_folder() then
       local gitfolder, _, _ =
-        utils.get_os_command_output({ 'git', 'rev-parse', '--show-toplevel' })
+          utils.get_os_command_output({ 'git', 'rev-parse', '--show-toplevel' })
       if gitfolder then
         dir = gitfolder[1]
       end
@@ -157,6 +157,7 @@ local functions = {
   end,
 
   toggle_foldmethod = function()
+    ---@diagnostic disable-next-line: undefined-field
     local foldmethod = vim.opt_local.foldmethod:get()
     if foldmethod == 'manual' then
       vim.opt_local.foldmethod = 'indent'

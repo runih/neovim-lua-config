@@ -11,6 +11,15 @@ return {
       -- Add necessary configuration options here
       -- Example: max_tokens = 1000, temperature = 0.7
     },
+    init = function()
+      -- Make sure the copilot chat window has markdown as the default filetype
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'copilot-chat',
+        callback = function()
+          vim.opt_local.filetype = 'markdown'
+        end,
+      })
+    end,
     keys = {
       {
         "<C-'>",
