@@ -14,7 +14,7 @@ return {
       local telescope_loaded, telescope = pcall(require, 'telescope')
       local actions_loaded, actions = pcall(require, 'telescope.actions')
       local action_state_loaded, action_state =
-        pcall(require, 'telescope.actions.state')
+          pcall(require, 'telescope.actions.state')
 
       if telescope_loaded and actions_loaded and action_state_loaded then
         telescope.setup({
@@ -39,7 +39,7 @@ return {
                 ['<C-p>'] = actions.cycle_history_prev,
 
                 ['<C-q>'] = actions.send_selected_to_qflist
-                  + actions.open_qflist,
+                    + actions.open_qflist,
                 ['<C-a>'] = function()
                   print(vim.inspect(action_state.get_selected_entry()))
                 end,

@@ -2,6 +2,7 @@
 return {
   -- Specify the Copilot plugin repository
   'github/copilot.vim',
+  lazy = false, -- Load the plugin lazily
   config = function()
     -- Disable default tab mapping for Copilot
     vim.g.copilot_no_tab_map = true
@@ -14,9 +15,9 @@ return {
 
     -- Map <C-e> in insert mode to accept Copilot suggestions
     vim.keymap.set(
-      'i', -- Mode: Insert
-      '<C-e>', -- Key combination
-      'copilot#Accept("<CR>")', -- Copilot function to accept suggestion
+      'i',                                                     -- Mode: Insert
+      '<C-e>',                                                 -- Key combination
+      'copilot#Accept("<CR>")',                                -- Copilot function to accept suggestion
       { expr = true, silent = true, replace_keycodes = false } -- Keymap options
     )
 

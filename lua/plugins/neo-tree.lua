@@ -1,6 +1,7 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',
+  lazy = true,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
@@ -64,20 +65,24 @@ return {
       window = {
         mappings = {
           ['1'] = function()
-            vim.api.nvim_exec('Neotree focus filesystem left', true)
+            vim.cmd('Neotree focus filesystem left')
           end,
           ['2'] = function()
-            vim.api.nvim_exec('Neotree focus buffers left', true)
+            vim.cmd('Neotree focus buffers left')
           end,
           ['3'] = function()
-            vim.api.nvim_exec('Neotree focus git_status left', true)
+            vim.cmd('Neotree focus git_status left')
           end,
         },
       },
       default_component_configs = {
         icon = {
+          default = '', -- Example icon for files
+          folder_open = '', -- Icon for opened folders
+          folder_closed = '', -- Icon for closed folders
           folder_empty = '󰜌',
           folder_empty_open = '󰜌',
+          use_filtered_colors = false, -- Or true, depending on your preference
         },
         git_status = {
           symbols = {
@@ -110,6 +115,7 @@ return {
       source_selector = {
         winbar = true,
         statusline = true,
+        truncation_character = "…", -- Character to indicate truncation
         sources = {
           { source = 'filesystem', display_name = ' 󰉓 Files ' },
           { source = 'buffers', display_name = ' 󰈙 Buffers ' },

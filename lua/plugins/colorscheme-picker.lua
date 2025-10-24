@@ -1,5 +1,6 @@
 return {
   'runih/colorscheme-picker.nvim',
+  event = 'VeryLazy',
   dependencies = {
     'nvim-telescope/telescope.nvim',
   },

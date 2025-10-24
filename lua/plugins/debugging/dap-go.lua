@@ -1,13 +1,8 @@
 return {
   'leoluz/nvim-dap-go',
+  lazy = true,
   dependencies = {
     'mfussenegger/nvim-dap',
   },
-  config = function()
-    local dapgo_loaded, dapgo = pcall(require, 'dap-go')
-
-    if dapgo_loaded then
-      dapgo.setup()
-    end
-  end,
+  opts = {},
 }

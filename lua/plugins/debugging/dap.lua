@@ -1,5 +1,6 @@
 return {
   'mfussenegger/nvim-dap',
+  lazy = true,
   dependencies = {
     'rcarriga/nvim-dap-ui',
     'nvim-telescope/telescope-dap.nvim',
@@ -81,7 +82,7 @@ return {
 
     local MASON_BIN_PATH = os.getenv('HOME') .. '/.local/share/nvim/mason/bin'
     local MASON_PACKAGE_PATH = os.getenv('HOME')
-      .. '/.local/share/nvim/mason/packages'
+        .. '/.local/share/nvim/mason/packages'
 
     -- loading plugins
     local dap_loaded, dap = pcall(require, 'dap')
@@ -127,16 +128,16 @@ return {
           program = function()
             return vim.fn.input(
               'Select the dll to debug'
-                .. vim.fn.getcwd()
-                .. '/bin/Debug/'
-                .. 'file'
+              .. vim.fn.getcwd()
+              .. '/bin/Debug/'
+              .. 'file'
             )
           end,
         },
       }
       local BASH_DEBUG_ADAPTER_BIN = MASON_BIN_PATH .. '/bash-debug-adapter'
       local BASHDB_DIR = MASON_PACKAGE_PATH
-        .. '/bash-debug-adapter/extension/bashdb_dir'
+          .. '/bash-debug-adapter/extension/bashdb_dir'
 
       dap.adapters.sh = {
         type = 'executable',

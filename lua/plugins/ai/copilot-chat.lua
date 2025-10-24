@@ -1,11 +1,12 @@
 return {
   {
     'CopilotC-Nvim/CopilotChat.nvim',
+    lazy = true,
     dependencies = {
-      { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
+      { 'github/copilot.vim' },                       -- or zbirenbaum/copilot.lua
       { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
     },
-    build = 'make tiktoken', -- Only on MacOS or Linux
+    build = 'make tiktoken',                          -- Only on MacOS or Linux
     opts = {
       -- Add necessary configuration options here
       -- Example: max_tokens = 1000, temperature = 0.7

@@ -6,6 +6,8 @@ require('core.options') -- General options and settings
 require('core.keymaps') -- Key mappings
 require('core.globals') -- Global variables
 require('core.autocmd') -- Autocommands
+require('core.lsp')      -- Language Server Protocol configurations
+
 
 -- GUI-specific configurations
 if vim.g.neovide then
