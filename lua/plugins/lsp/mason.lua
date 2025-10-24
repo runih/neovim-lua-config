@@ -1,13 +1,14 @@
 return {
   'williamboman/mason-lspconfig.nvim',
+  lazy = false,
   opts = {},
   keys = {
     {
       '<leader>M',
       mode = 'n',
       '<cmd>Mason<CR>',
-      { desc = '[M]ason' }
-    }
+      { desc = '[M]ason' },
+    },
   },
   dependencies = {
     {
