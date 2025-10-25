@@ -1,12 +1,14 @@
+-- Load core configurations
+require('core.options') -- General options and settings
+require('core.globals') -- Global variables
+--
 -- Load the lazy.nvim plugin manager setup
 require('lazy-setup')
 
--- Load core configurations
-require('core.options') -- General options and settings
+-- Continue loading core configurations after plugins are set up
 require('core.keymaps') -- Key mappings
-require('core.globals') -- Global variables
 require('core.autocmd') -- Autocommands
-require('core.lsp')      -- Language Server Protocol configurations
+require('core.lsp')     -- Language Server Protocol configurations
 
 
 -- GUI-specific configurations
