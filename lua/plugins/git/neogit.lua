@@ -8,17 +8,7 @@ return {
   },
   opts = {},
   keys = {
-    {
-      '<leader>gn',
-      mode = { 'n' },
-      '<cmd>Neogit<CR>',
-      desc = 'NeoGit',
-    },
-    {
-      '<leader>gb',
-      mode = { 'n' },
-      '<cmd>BlameToggle virtual<CR>',
-      desc = 'Git Blame',
-    },
+    { '<leader>gn', mode = 'n', '<cmd>Neogit<CR>',              desc = 'NeoGit' },
+    { '<leader>gb', mode = 'n', '<cmd>BlameToggle virtual<CR>', desc = 'Git Blame' },
   },
 }

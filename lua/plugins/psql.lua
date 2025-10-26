@@ -11,12 +11,6 @@ return {
     opts = {},
   },
   keys = {
-    {
-      '<leader>pp',
-      function()
-        require('psql.pgpass').open()
-      end,
-      desc = 'Open ~/.pgpass file',
-    },
+    { '<leader>pp', "<cmd>lua require('psql.pgpass').open()<cr>", desc = 'Open ~/.pgpass file' },
   },
 }

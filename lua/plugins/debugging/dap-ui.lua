@@ -6,22 +6,8 @@ return {
     'nvim-neotest/nvim-nio',
   },
   keys = {
-    {
-      '<leader>do',
-      mode = { 'n' },
-      function()
-        require('dapui').open()
-      end,
-      desc = '[d]ebug UI [o]pen',
-    },
-    {
-      '<leader>dc',
-      mode = { 'n' },
-      function()
-        require('dapui').close()
-      end,
-      desc = '[d]ebug UI [c]close',
-    },
+    { '<leader>do', mode = 'n', "<cmd>lua require('dapui').open()<cr>",  desc = '[d]ebug UI [o]pen' },
+    { '<leader>dc', mode = 'n', "<cmd>lua require('dapui').close()<cr>", desc = '[d]ebug UI [c]close' },
   },
   opts = {},
 }

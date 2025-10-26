@@ -1,18 +1,8 @@
 return {
   'uga-rosa/ccc.nvim',
   keys = {
-    {
-      '<leader>ccc',
-      mode = { 'n' },
-      '<cmd>CccPick<CR>',
-      desc = '[C]reate [C]olor [C]ode Pick',
-    },
-    {
-      '<leader>ccC',
-      mode = { 'n' },
-      '<cmd>CccConvert<CR>',
-      desc = '[C]reate [C]olor [C]ode Convert',
-    },
+    { '<leader>ccc', mode = 'n', '<cmd>CccPick<CR>',    desc = '[C]reate [C]olor [C]ode Pick' },
+    { '<leader>ccC', mode = 'n', '<cmd>CccConvert<CR>', desc = '[C]reate [C]olor [C]ode Convert' },
   },
   config = function()
     local ccc_loaded, ccc = pcall(require, 'ccc')
