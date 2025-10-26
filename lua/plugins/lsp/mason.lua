@@ -5,7 +5,16 @@ return {
   dependencies = {
     {
       'williamboman/mason.nvim',
-      opts = {},
+      opts = {
+        ui = {
+          -- border = 'rounded',
+          icons = {
+            package_installed = '✓',
+            package_pending = '➜',
+            package_uninstalled = '✗',
+          },
+        },
+      },
     },
     'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
