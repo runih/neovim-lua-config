@@ -23,14 +23,20 @@ vim.g.maplocalleader = ' ' -- Space as the local leader key
 local lazy_loaded, lazy = pcall(require, 'lazy')
 if lazy_loaded then
   -- Configure lazy.nvim with plugin imports and settings
+  local local_plugin_path = vim.fn.stdpath('config') .. '/lua/local/plugins'
+  local plugins = {
+    { import = 'plugins' },           -- Import general plugins
+    { import = 'plugins.ai' },        -- Import AI-related plugins
+    { import = 'plugins.git' },       -- Import Git-related plugins
+    { import = 'plugins.lsp' },       -- Import LSP-related plugins
+    { import = 'plugins.debugging' }, -- Import debugging plugins
+  }
+  local stat_local_plugin_path = (vim.uv or vim.loop).fs_stat(local_plugin_path)
+  if stat_local_plugin_path and stat_local_plugin_path.type == 'directory' then
+    table.insert(plugins, { import = 'local.plugins' }) -- Import local plugins if the directory exists
+  end
   lazy.setup({
-    spec = {
-      { import = 'plugins' },           -- Import general plugins
-      { import = 'plugins.ai' },        -- Import AI-related plugins
-      { import = 'plugins.git' },       -- Import Git-related plugins
-      { import = 'plugins.lsp' },       -- Import LSP-related plugins
-      { import = 'plugins.debugging' }, -- Import debugging plugins
-    },
+    spec = plugins,
     checker = {
       enabled = true, -- Enable plugin update checker
       notify = false, -- Disable notifications for updates
