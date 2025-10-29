@@ -23,6 +23,9 @@ opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 
+-- Set the default border style for floating windows to 'rounded'
+vim.opt.winborder = 'rounded'
+
 -- line wrapping
 opt.wrap = false
 
