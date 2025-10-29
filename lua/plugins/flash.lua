@@ -3,7 +3,6 @@ return {
   lazy = true,
   ---@type Flash.Config
   opts = {},
-  -- stylua: ignore
   keys = {
     { "<leader>s", mode = { "n", "x", "o" }, '<cmd>lua require("flash").jump()<cr>',              desc = "Flash" },
     { "<leader>S", mode = { "n", "x", "o" }, '<cmd>lua require("flash").treesitter()<cr>',        desc = "Flash Treesitter" },

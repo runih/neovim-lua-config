@@ -28,7 +28,7 @@ return {
     )
     vim.fn.sign_define(
       'DiagnosticSignHint',
-      { text = '', texthl = 'DiagnosticSignHint' }
+      { text = ' ', texthl = 'DiagnosticSignHint' }
     )
 
     local now_tree_loaded, neo_tree = pcall(require, 'neo-tree')

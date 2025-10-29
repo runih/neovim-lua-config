@@ -37,6 +37,36 @@ if lazy_loaded then
   end
   lazy.setup({
     spec = plugins,
+    ui = {
+      border = 'rounded', -- Rounded borders for the UI
+      icons = {
+        cmd = '⌘',
+        config = '🛠️',
+        event = '📅',
+        ft = '📂',
+        init = '⚙️',
+        import = '📥',
+        keys = '🗝️',
+        lazy = '💤',
+        loaded = '✓',
+        not_loaded = '✗',
+        plugin = '🔌',
+        runtime = '💻',
+        source = '📄',
+        start = '🚀',
+        task = '📋',
+        list = {
+          '🌑 ',
+          '🌒 ',
+          '🌓 ',
+          '🌔 ',
+          '🌕 ',
+          '🌖 ',
+          '🌗 ',
+          '🌘 ',
+        },
+      },
+    },
     checker = {
       enabled = true, -- Enable plugin update checker
       notify = false, -- Disable notifications for updates

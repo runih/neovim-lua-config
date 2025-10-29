@@ -3,6 +3,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   event = { 'BufReadPre', 'BufNewFile' },
   build = ':TSUpdate',
+  lazy = false,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'neovim/tree-sitter-vimdoc',

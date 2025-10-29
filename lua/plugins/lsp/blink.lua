@@ -2,6 +2,7 @@ return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
   dependencies = { 'rafamadriz/friendly-snippets' },
+  lazy = false,
 
   -- use a release tag to download pre-built binaries
   version = '1.*',
@@ -34,7 +35,24 @@ return {
     },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = false } },
+    completion = {
+      documentation = {
+        auto_show = false,
+      },
+      menu = {
+        -- Don't automatically show the completion menu
+        auto_show = false,
+        border = 'rounded',
+
+        -- nvim-cmp style menu
+        draw = {
+          columns = {
+            { "label",     "label_description", gap = 1 },
+            { "kind_icon", "kind" }
+          },
+        },
+      },
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
