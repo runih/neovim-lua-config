@@ -8,7 +8,6 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'neovim/tree-sitter-vimdoc',
     'windwp/nvim-ts-autotag',
-    'nvim-treesitter/playground',
   },
   opts = {
     modules = {},
@@ -30,5 +29,5 @@ return {
         node_decremental = '<bs>',
       },
     },
-  }
+  },
 }
