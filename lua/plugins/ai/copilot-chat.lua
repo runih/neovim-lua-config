@@ -8,8 +8,7 @@ return {
     },
     build = 'make tiktoken',                          -- Only on MacOS or Linux
     opts = {
-      -- Add necessary configuration options here
-      -- Example: max_tokens = 1000, temperature = 0.7
+      model = 'claude-sonnet-5.5',
     },
     init = function()
       -- Make sure the copilot chat window has markdown as the default filetype
